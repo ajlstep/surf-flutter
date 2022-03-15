@@ -15,48 +15,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MyFirstWidget(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  // The GlobalKey will allow us to access the Scaffold's State
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+class MyFirstWidget extends StatelessWidget {
+  int count = 0;
+  MyFirstWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // We add the key to the Scaffold so we can access it later
-      key: _key,
-      body: Center(
-        child: MaterialButton(
-          child: const Text(
-            "SnackBar",
-            style: TextStyle(color: Colors.white),
-          ),
-          color: Colors.red,
-          // We now can access the currentState via the GlobalKey
-          onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-            BottomSnackbar("Oh! You clicked me!"),
-          ),
-        ),
-      ),
+    count++;
+    print("count $count"); // count 1
+    // build для StatelessWidget вызывается при открытий приложения
+    return const Center(
+      child: Text('Hello!'),
     );
   }
 }
-
-class BottomSnackbar extends SnackBar {
-  final String text;
-
-  BottomSnackbar(String text)
-      : text = text,
-        super(content: Text(text));
-
-  @override
-  SnackBar build(BuildContext context) {
-    return this;
-  }
-}
-
-//new branch
