@@ -11,6 +11,7 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('appbar'),
         // actions: [
@@ -19,7 +20,7 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       drawer: Container(
         color: Colors.grey,
-        width: MediaQuery.of(context).size.width / 4,
+        width: MediaQuery.of(context).size.width / 2,
         child: ListView(
           children: getContainers(),
           padding: const EdgeInsets.all(5),
@@ -68,6 +69,7 @@ List<Widget> getContainers() {
       child: const Center(child: Text('four')),
       height: 150,
     ),
+    TextField(),
   ];
 }
 
