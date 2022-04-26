@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rich_text/const/const.dart';
 
 class SightListScreen extends StatefulWidget {
@@ -14,6 +15,10 @@ class _SightListScreenState extends State<SightListScreen> {
     return Scaffold(
       backgroundColor: Constant.white,
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor: Colors.red,
+        ),
         title: const Text('appbar'),
         backgroundColor: Constant.white,
         elevation: 0,
