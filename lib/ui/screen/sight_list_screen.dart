@@ -76,31 +76,31 @@ List<TextSpan> getInlineSpan() {
   return list;
 }
 
-// List<Widget> getContainers() {
-//   return <Widget>[
-//     Container(
-//       color: Colors.blue,
-//       child: const Text('one'),
-//       height: 25,
-//     ),
-//     Container(
-//       color: Colors.yellow,
-//       child: const Text('two'),
-//       height: 50,
-//     ),
-//     Container(
-//       color: Colors.green,
-//       child: const Text('three'),
-//       height: 35,
-//     ),
-//     Container(
-//       color: Colors.deepOrange,
-//       child: const Center(child: Text('four')),
-//       height: 150,
-//     ),
-//     TextField(),
-//   ];
-// }
+List<Widget> getContainers() {
+  return <Widget>[
+    Container(
+      color: Colors.blue,
+      child: const Text('one'),
+      height: 25,
+    ),
+    Container(
+      color: Colors.yellow,
+      child: const Text('two'),
+      height: 50,
+    ),
+    Container(
+      color: Colors.green,
+      child: const Text('three'),
+      height: 35,
+    ),
+    Container(
+      color: Colors.deepOrange,
+      child: const Center(child: Text('four')),
+      height: 150,
+    ),
+    TextField(),
+  ];
+}
 
 // List<Widget> getList() {
 //   return [
