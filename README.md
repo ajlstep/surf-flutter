@@ -20,5 +20,5 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/ajlstep/surf-flutter2.git
+git remote add origin https://github.com/ajlstep/surf-flutter.git
 git push -u origin main
