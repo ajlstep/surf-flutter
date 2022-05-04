@@ -82,5 +82,8 @@ class CColors {
   static const backGround = Color(0xFFF5F5F5);
   static const smallText = Color(0xFF7C7E92);
   static const subTextColor = Color.fromARGB(255, 103, 103, 109);
+  static const timeOpenText = Color(0xFF7C7E92);
+  static const divider = Color.fromRGBO(124, 126, 146, 0.56);
+  static const buttZaplanirovati = Color.fromRGBO(124, 126, 146, 0.56);
   // static const largeTitleColor = Color(0xFFC4C4C4);
 }

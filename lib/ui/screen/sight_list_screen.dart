@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/const/const.dart';
-import './sight_card.dart';
+// import './sight_card.dart';
+import 'package:places/widgets/card_widget.dart';
+import 'package:places/mocks.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -97,6 +99,15 @@ List<TextSpan> getInlineSpan() {
         color: item.value,
       ),
     ));
+  }
+  return list;
+}
+
+List<Widget> getListCards() {
+  List<Widget> list = [];
+  Mocks mocks = Mocks();
+  for (var item in mocks.mocks) {
+    list.add(CardWidget(sight: item));
   }
   return list;
 }

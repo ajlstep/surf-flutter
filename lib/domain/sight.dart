@@ -15,7 +15,7 @@ class Sight {
   late double lon;
   late String details;
   late typeSight type;
-  late String imgURL;
+  late List<String> imgURL;
 
   Sight(this.name, this.lat, this.lon, this.details, this.type, this.imgURL);
 }

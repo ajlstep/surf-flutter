@@ -23,7 +23,7 @@ class CardWidget extends StatelessWidget {
           color: CColors.white,
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           image: DecorationImage(
-            image: NetworkImage(sight.imgURL),
+            image: NetworkImage(sight.imgURL[0]),
             fit: BoxFit.cover,
           ),
         ),
@@ -83,10 +83,13 @@ class CardWidget extends StatelessWidget {
                           Text(
                             sight.name,
                             maxLines: 2,
-                            overflow: TextOverflow.clip,
+                            overflow: TextOverflow.ellipsis,
                             style: CTextStyles.text.copyWith(
                                 // color: CColors.white,
                                 ),
+                          ),
+                          const SizedBox(
+                            height: 2,
                           ),
                           Text(
                             sight.details,
@@ -94,7 +97,7 @@ class CardWidget extends StatelessWidget {
                               color: CColors.smallText,
                             ),
                             maxLines: 1,
-                            overflow: TextOverflow.clip,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
