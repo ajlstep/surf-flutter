@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/const/const.dart';
+// import './sight_card.dart';
+import 'package:places/widgets/card_widget.dart';
+import 'package:places/mocks.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -13,15 +16,18 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constant.white,
+      backgroundColor: CColors.white,
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.transparent,
           systemNavigationBarColor: Colors.red,
         ),
-        title: const Text('appbar'),
-        backgroundColor: Constant.white,
+        title: getText(1),
+        backgroundColor: CColors.white,
         elevation: 0,
+        toolbarHeight: 136,
+        titleSpacing: 16,
+        primary: false,
       ),
       // drawer: Container(
       //   color: Colors.grey,
@@ -31,7 +37,7 @@ class _SightListScreenState extends State<SightListScreen> {
       //     padding: const EdgeInsets.all(5),
       //   ),
       // ),
-      body: getBody(1),
+      body: getBody(),
       // GridView.count(
       //   crossAxisCount: 4,
       //   children: getList(),
@@ -40,32 +46,53 @@ class _SightListScreenState extends State<SightListScreen> {
   }
 }
 
-Widget getBody(int a) {
+Widget getBody() {
   return Padding(
-    padding: const EdgeInsets.fromLTRB(16, 40, 16, 0),
-    child: (a == 0 ? getText() : getRichText()),
+    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+    child: SingleChildScrollView(
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: getListCards(),
+      ),
+    ),
   );
 }
 
-Widget getText() {
-  return const Text(
-    Constant.text,
-    style: Constant.style,
+Widget getText(int a) {
+  if (a == 0) {
+    return getSimpleText();
+  } else {
+    return getRichText();
+  }
+}
+
+Widget getSimpleText() {
+  return const Padding(
+    padding: EdgeInsets.fromLTRB(16, 64, 16, 20),
+    child: Text(
+      CTexts.text,
+      style: CTextStyles.largeTitle,
+      textAlign: TextAlign.left,
+    ),
   );
 }
 
 Widget getRichText() {
-  return RichText(
-    text: TextSpan(
-      style: Constant.style,
-      children: getInlineSpan(),
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(16, 64, 16, 20),
+    child: RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        style: CTextStyles.largeTitle,
+        children: getInlineSpan(),
+      ),
     ),
   );
 }
 
 List<TextSpan> getInlineSpan() {
   List<TextSpan> list = [];
-  for (var item in Constant.textAndColors.entries) {
+  for (var item in CTexts.textAndColors.entries) {
     list.add(TextSpan(
       text: item.key,
       style: TextStyle(
@@ -76,31 +103,40 @@ List<TextSpan> getInlineSpan() {
   return list;
 }
 
-List<Widget> getContainers() {
-  return <Widget>[
-    Container(
-      color: Colors.blue,
-      child: const Text('one'),
-      height: 25,
-    ),
-    Container(
-      color: Colors.yellow,
-      child: const Text('two'),
-      height: 50,
-    ),
-    Container(
-      color: Colors.green,
-      child: const Text('three'),
-      height: 35,
-    ),
-    Container(
-      color: Colors.deepOrange,
-      child: const Center(child: Text('four')),
-      height: 150,
-    ),
-    TextField(),
-  ];
+List<Widget> getListCards() {
+  List<Widget> list = [];
+  Mocks mocks = Mocks();
+  for (var item in mocks.mocks) {
+    list.add(CardWidget(sight: item));
+  }
+  return list;
 }
+
+// List<Widget> getContainers() {
+//   return <Widget>[
+//     Container(
+//       color: Colors.blue,
+//       child: const Text('one'),
+//       height: 25,
+//     ),
+//     Container(
+//       color: Colors.yellow,
+//       child: const Text('two'),
+//       height: 50,
+//     ),
+//     Container(
+//       color: Colors.green,
+//       child: const Text('three'),
+//       height: 35,
+//     ),
+//     Container(
+//       color: Colors.deepOrange,
+//       child: const Center(child: Text('four')),
+//       height: 150,
+//     ),
+//     TextField(),
+//   ];
+// }
 
 // List<Widget> getList() {
 //   return [
