@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/const.dart';
 import '../../domain/sight.dart';
+import 'package:places/widgets/decoration_imgae.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -17,10 +18,9 @@ class SightCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: CColors.white,
             borderRadius: const BorderRadius.all(Radius.circular(15)),
-            image: DecorationImage(
-              image: NetworkImage(sight.imgURL[0]),
-              fit: BoxFit.cover,
-            ),
+            image: (AppImageConstructor(fit: BoxFit.cover)
+                  ..imageURL = sight.imgURL[0])
+                .image(),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
