@@ -1,3 +1,5 @@
+import 'package:places/widgets/appbar.dart';
+
 import '../../mocks.dart';
 import '../../domain/sight.dart';
 import 'package:flutter/material.dart';
@@ -16,44 +18,7 @@ class _DetailedPlaceState extends State<DetailedPlace> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: CColors.green,
-        toolbarHeight: 360,
-        primary: false,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(_sight.imgURL[0]),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        titleSpacing: 0,
-        elevation: 0,
-        title: SizedBox(
-          width: double.infinity,
-          height: 360,
-          child: Stack(
-            children: [
-              Positioned(
-                top: 38,
-                left: 16,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: CColors.white,
-                  ),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: CColors.textColor,
-                    size: 36,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      appBar: AppBarCustom(imgURL: _sight.imgURL[0]),
       body: BodyWidget(_sight),
     );
   }

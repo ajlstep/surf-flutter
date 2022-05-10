@@ -4,6 +4,7 @@ import 'package:places/const/const.dart';
 // import './sight_card.dart';
 import 'package:places/widgets/card_widget.dart';
 import 'package:places/mocks.dart';
+import '../../widgets/appbar.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -17,31 +18,8 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CColors.white,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: Colors.transparent,
-          systemNavigationBarColor: Colors.red,
-        ),
-        title: getText(1),
-        backgroundColor: CColors.white,
-        elevation: 0,
-        toolbarHeight: 136,
-        titleSpacing: 16,
-        primary: false,
-      ),
-      // drawer: Container(
-      //   color: Colors.grey,
-      //   width: MediaQuery.of(context).size.width / 2,
-      //   child: ListView(
-      //     children: getContainers(),
-      //     padding: const EdgeInsets.all(5),
-      //   ),
-      // ),
+      appBar: AppBarNormal(title: getText(1)),
       body: getBody(),
-      // GridView.count(
-      //   crossAxisCount: 4,
-      //   children: getList(),
-      // ),
     );
   }
 }
