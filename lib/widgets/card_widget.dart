@@ -9,10 +9,10 @@ import '../../domain/sight.dart';
 //   return Widget();
 // }
 
-class CardWidget extends StatelessWidget {
+class SightCard extends StatelessWidget {
   final Sight sight;
 
-  const CardWidget({Key? key, required this.sight}) : super(key: key);
+  const SightCard({Key? key, required this.sight}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
