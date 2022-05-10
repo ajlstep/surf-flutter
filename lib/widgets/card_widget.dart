@@ -72,24 +72,11 @@ class SightCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            LayoutBuilder(
-                              builder: (context, constraints) {
-                                return ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    maxWidth: constraints.maxWidth / 2,
-                                    minWidth: constraints.maxWidth / 2,
-                                  ),
-                                  child: Container(
-                                    color: CColors.divider,
-                                    child: Text(
-                                      sight.name,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: CTextStyles.text.copyWith(),
-                                    ),
-                                  ),
-                                );
-                              },
+                            Text(
+                              sight.name,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: CTextStyles.text.copyWith(),
                             ),
                             const SizedBox(
                               height: 2,
