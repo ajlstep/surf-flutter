@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/const/const.dart';
-import 'package:places/widgets/decoration_imgae.dart';
+import 'package:places/widgets/decoration_image.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   const AppBarCustom({Key? key, required this.imgURL})
@@ -19,8 +19,12 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: CColors.green,
       toolbarHeight: 360,
       primary: false,
-      flexibleSpace: (AppImageConstructor(fit: BoxFit.cover)..imageURL = imgURL)
-          .contained(),
+      flexibleSpace: AppImageConstructor(
+              fit: BoxFit.cover,
+              imgURL: imgURL,
+              opacity: 0.4,
+              gradient: CGradients.whiteImageGradient)
+          .image(),
       titleSpacing: 0,
       elevation: 0,
       title: SizedBox(
