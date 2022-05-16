@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'domain/sight.dart';
 
 class Mocks {
@@ -56,3 +58,22 @@ class Mocks {
     ));
   }
 }
+
+// class VisitList {
+//   List<Visits> g() {
+//     List<Visits> _list = [];
+//     var _rnd = Random();
+//     for (var item in Mocks().mocks) {
+//       _list.add(Visits(item, _rnd.nextBool()));
+//     }
+//     return _list;
+//   }
+// }
+
+List<Visits> VisitList = [
+  Visits(Mocks().mocks[0], true, DateTime.parse("2012-02-27 15:24")),
+  Visits(Mocks().mocks[1], true, DateTime.parse("2012-03-27 09:00")),
+  Visits(Mocks().mocks[2], false, DateTime.parse("2012-04-27 11:00")),
+  Visits(Mocks().mocks[3], false, DateTime.parse("2012-05-27 09:00")),
+  Visits(Mocks().mocks[4], true, DateTime.parse("2012-06-27 10:00")),
+];
