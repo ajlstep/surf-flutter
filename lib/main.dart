@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'ui/screen/sight_list_screen.dart' as screen;
-import 'ui/screen/sight_detailed.dart' as screen2;
+import 'package:places/ui/screen/sight_list_screen.dart' as screen;
+import 'package:places/ui/screen/sight_detailed.dart' as screen2;
+import 'package:places/ui/screen/visiting_screen.dart' as screen3;
+import 'package:places/mocks.dart';
 // import 'ui/screen/sight_list_screen.dart';
 
 void main() {
@@ -20,8 +22,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
         colorScheme: const ColorScheme.light(),
       ),
-      home: const screen.SightListScreen(),
+      // home: const screen.SightListScreen(),
       // home: const screen2.DetailedPlace(),
+      home: screen3.VisitingScreen(visitList: VisitList),
     );
   }
 }

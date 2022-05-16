@@ -19,3 +19,11 @@ class Sight {
 
   Sight(this.name, this.lat, this.lon, this.details, this.type, this.imgURL);
 }
+
+class Visits {
+  late Sight sight;
+  late bool visit;
+  late DateTime date;
+
+  Visits(this.sight, this.visit, this.date);
+}

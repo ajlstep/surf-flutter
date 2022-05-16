@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places/const/const.dart';
+import 'package:places/const/colors.dart';
 
 class AppImageConstructor {
   final BoxFit? fit;

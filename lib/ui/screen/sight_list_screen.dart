@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:places/const/const.dart';
-// import './sight_card.dart';
-import 'package:places/widgets/card_widget.dart';
+import 'package:places/const/texts.dart';
+import 'package:places/const/colors.dart';
+import 'package:places/const/textstyle.dart';
+import 'package:places/widgets/card/card_widget.dart';
 import 'package:places/mocks.dart';
-import '../../widgets/appbar.dart';
+import 'package:places/widgets/appbar/appbar.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -18,74 +18,59 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CColors.white,
-      appBar: AppBarNormal(title: getText(1)),
-      body: getBody(),
+      appBar: AppBarNormal(title: getRichText()),
+      body: const SightListBody(),
     );
   }
-}
 
-Widget getBody() {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-    child: SingleChildScrollView(
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        children: getListCards(),
+  Widget getRichText() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 64, 16, 20),
+      child: RichText(
+        textAlign: TextAlign.left,
+        text: TextSpan(
+          style: CTextStyles.largeTitle,
+          children: getInlineSpan(),
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget getText(int a) {
-  if (a == 0) {
-    return getSimpleText();
-  } else {
-    return getRichText();
+  List<TextSpan> getInlineSpan() {
+    List<TextSpan> list = [];
+    for (var item in CTitleTexts.textAndColors.entries) {
+      list.add(TextSpan(
+        text: item.key,
+        style: TextStyle(
+          color: item.value,
+        ),
+      ));
+    }
+    return list;
   }
 }
 
-Widget getSimpleText() {
-  return const Padding(
-    padding: EdgeInsets.fromLTRB(16, 64, 16, 20),
-    child: Text(
-      CTexts.text,
-      style: CTextStyles.largeTitle,
-      textAlign: TextAlign.left,
-    ),
-  );
-}
+class SightListBody extends StatelessWidget {
+  const SightListBody({Key? key}) : super(key: key);
 
-Widget getRichText() {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(16, 64, 16, 20),
-    child: RichText(
-      textAlign: TextAlign.left,
-      text: TextSpan(
-        style: CTextStyles.largeTitle,
-        children: getInlineSpan(),
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: _getListCards(),
+        ),
       ),
-    ),
-  );
-}
-
-List<TextSpan> getInlineSpan() {
-  List<TextSpan> list = [];
-  for (var item in CTexts.textAndColors.entries) {
-    list.add(TextSpan(
-      text: item.key,
-      style: TextStyle(
-        color: item.value,
-      ),
-    ));
+    );
   }
-  return list;
-}
 
-List<Widget> getListCards() {
-  List<Widget> list = [];
-  Mocks mocks = Mocks();
-  for (var item in mocks.mocks) {
-    list.add(SightCard(sight: item));
+  List<Widget> _getListCards() {
+    List<Widget> list = [];
+    Mocks mocks = Mocks();
+    for (var item in mocks.mocks) {
+      list.add(SightCard(sight: item));
+    }
+    return list;
   }
-  return list;
 }

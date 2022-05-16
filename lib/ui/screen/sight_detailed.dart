@@ -1,10 +1,12 @@
-import 'package:places/widgets/appbar.dart';
+import 'package:places/widgets/appbar/appbar.dart';
 
-import '../../mocks.dart';
-import '../../domain/sight.dart';
+import 'package:places/mocks.dart';
+import 'package:places/domain/sight.dart';
 import 'package:flutter/material.dart';
-import 'package:places/const/const.dart';
-import 'package:places/widgets/buttons.dart';
+import 'package:places/widgets/button/buttons.dart';
+import 'package:places/const/textstyle.dart';
+import 'package:places/const/colors.dart';
+import 'package:places/const/texts.dart';
 
 class DetailedPlace extends StatefulWidget {
   const DetailedPlace({Key? key}) : super(key: key);
@@ -68,7 +70,7 @@ class BodyWidget extends StatelessWidget {
                     minWidth: 5,
                   ),
                   child: Text(
-                    "закрыто до 19:00 fdsfds fds fsd fsd fds dsadsadsad asd",
+                    CTextFileds.closeTime,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: CTextStyles.smallBold
@@ -94,7 +96,7 @@ class BodyWidget extends StatelessWidget {
                 color: CColors.backGround,
               ),
               text: Text(
-                "ПОСТРОИТЬ МАРШРУТ",
+                CButtonTexts.placeRoute,
                 style:
                     CTextStyles.smallBold.copyWith(color: CColors.backGround),
               ),
@@ -119,7 +121,7 @@ class BodyWidget extends StatelessWidget {
                     color: CColors.buttZaplanirovati,
                   ),
                   text: Text(
-                    "Запланировать",
+                    CButtonTexts.schedule,
                     style: CTextStyles.small
                         .copyWith(color: CColors.buttZaplanirovati),
                   ),
@@ -127,7 +129,8 @@ class BodyWidget extends StatelessWidget {
                 ),
                 ButtonConstructor(
                   onPressed: () {},
-                  text: const Text("В Избранное", style: CTextStyles.small),
+                  text: const Text(CButtonTexts.addFavorite,
+                      style: CTextStyles.small),
                   icon: const Icon(
                     Icons.linked_camera,
                     color: CColors.textColor,
