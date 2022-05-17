@@ -3,6 +3,8 @@ import 'package:places/ui/screen/sight_list_screen.dart' as screen;
 import 'package:places/ui/screen/sight_detailed.dart' as screen2;
 import 'package:places/ui/screen/visiting_screen.dart' as screen3;
 import 'package:places/mocks.dart';
+
+import 'ui/res/themes.dart';
 // import 'ui/screen/sight_list_screen.dart';
 
 void main() {
@@ -18,10 +20,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '4. Введите текст вопроса',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        colorScheme: const ColorScheme.light(),
-      ),
+      theme: lightTheme,
+      // theme: ThemeData(
+      //   primarySwatch: Colors.indigo,
+      //   colorScheme: const ColorScheme.light(),
+      // ),
       // home: const screen.SightListScreen(),
       // home: const screen2.DetailedPlace(),
       home: screen3.VisitingScreen(visitList: VisitList),

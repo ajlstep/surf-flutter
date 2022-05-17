@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/const/colors.dart';
@@ -29,7 +31,8 @@ class _SightListScreenState extends State<SightListScreen> {
       child: RichText(
         textAlign: TextAlign.left,
         text: TextSpan(
-          style: CTextStyles.largeTitle,
+          // style: CTextStyles.largeTitle,
+          style: Theme.of(context).textTheme.titleLarge,
           children: getInlineSpan(),
         ),
       ),

@@ -27,7 +27,7 @@ class VisitingScreen extends StatelessWidget {
           title: const Center(
             child: Text(
               CTitleTexts.titleFavorite,
-              style: CTextStyles.subtitle,
+              // style: CTextStyles.subtitle,
             ),
           ),
           bottomBar: PreferredSize(
