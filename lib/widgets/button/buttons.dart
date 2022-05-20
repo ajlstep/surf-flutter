@@ -27,15 +27,20 @@ class ButtonConstructor extends StatelessWidget {
       onPressed: onPressed,
       style: backgroundColor == null
           ? null
-          : ButtonStyle(
+          : Theme.of(context).elevatedButtonTheme.style?.copyWith(
               backgroundColor:
-                  MaterialStateProperty.all<Color>(backgroundColor!),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(padding.radius),
-                ),
-              ),
-            ),
+                  MaterialStateProperty.all<Color>(backgroundColor!)),
+      // style: backgroundColor == null
+      //     ? null
+      //     : ButtonStyle(
+      //         backgroundColor:
+      //             MaterialStateProperty.all<Color>(backgroundColor!),
+      //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      //           RoundedRectangleBorder(
+      //             borderRadius: BorderRadius.circular(padding.radius),
+      //           ),
+      //         ),
+      //       ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(
             padding.left, padding.left, padding.left, padding.left),
