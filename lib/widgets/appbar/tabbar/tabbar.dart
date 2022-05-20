@@ -19,8 +19,8 @@ class TabBarVisitingWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(40),
       ),
       child: TabBar(
-        labelStyle: CTextStyles.smallBold,
-        labelColor: CColors.white,
+        labelStyle: Theme.of(context).textTheme.subtitle1,
+        // labelColor: CColors.white,
         unselectedLabelColor: CColors.textColor,
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(40),
@@ -32,36 +32,4 @@ class TabBarVisitingWidget extends StatelessWidget {
   }
 
   Size get preferredSize => const Size.fromHeight(40.0);
-}
-
-class TabBarVisitingClass {
-  final Size preferredSize = const Size.fromHeight(40.0);
-  final List<Widget> tablist;
-  TabBarVisitingClass({required this.tablist});
-
-  PreferredSize build() {
-    return PreferredSize(
-      preferredSize: preferredSize,
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 6,
-        ),
-        height: 40,
-        decoration: BoxDecoration(
-          color: CColors.backGround,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: TabBar(
-          labelStyle: CTextStyles.smallBold,
-          labelColor: CColors.white,
-          unselectedLabelColor: CColors.textColor,
-          indicator: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
-            color: CColors.textColor,
-          ),
-          tabs: tablist,
-        ),
-      ),
-    );
-  }
 }

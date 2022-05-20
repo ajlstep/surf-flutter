@@ -4,7 +4,6 @@ import 'package:places/mocks.dart';
 import 'package:places/domain/sight.dart';
 import 'package:flutter/material.dart';
 import 'package:places/widgets/button/buttons.dart';
-import 'package:places/const/textstyle.dart';
 import 'package:places/const/colors.dart';
 import 'package:places/const/texts.dart';
 
@@ -42,7 +41,7 @@ class BodyWidget extends StatelessWidget {
               sight.name,
               // maxLines: 2,
               // overflow: TextOverflow.ellipsis,
-              style: CTextStyles.title,
+              style: Theme.of(context).textTheme.headline4,
             ),
             const SizedBox(
               height: 2,
@@ -58,7 +57,7 @@ class BodyWidget extends StatelessWidget {
                     sight.type.name.toString() + " dsadsad sa dsa dsa",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: CTextStyles.smallBold,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
                 const SizedBox(
@@ -73,8 +72,12 @@ class BodyWidget extends StatelessWidget {
                     CTextFileds.closeTime,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: CTextStyles.smallBold
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
                         .copyWith(color: CColors.timeOpenText),
+                    // style: CTextStyles.smallBold
+                    //     .copyWith(color: CColors.timeOpenText),
                   ),
                 ),
               ],
@@ -84,7 +87,7 @@ class BodyWidget extends StatelessWidget {
             ),
             Text(
               sight.details,
-              style: CTextStyles.smallBold,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
             const SizedBox(
               height: 24,
@@ -97,8 +100,10 @@ class BodyWidget extends StatelessWidget {
               ),
               text: Text(
                 CButtonTexts.placeRoute,
-                style:
-                    CTextStyles.smallBold.copyWith(color: CColors.backGround),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1!
+                    .copyWith(color: CColors.backGround),
               ),
               backgroundColor: CColors.green,
               separatorWidth: 10,
@@ -122,15 +127,17 @@ class BodyWidget extends StatelessWidget {
                   ),
                   text: Text(
                     CButtonTexts.schedule,
-                    style: CTextStyles.small
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2!
                         .copyWith(color: CColors.buttZaplanirovati),
                   ),
                   separatorWidth: 10,
                 ),
                 ButtonConstructor(
                   onPressed: () {},
-                  text: const Text(CButtonTexts.addFavorite,
-                      style: CTextStyles.small),
+                  text: Text(CButtonTexts.addFavorite,
+                      style: Theme.of(context).textTheme.bodyText2),
                   icon: const Icon(
                     Icons.linked_camera,
                     color: CColors.textColor,

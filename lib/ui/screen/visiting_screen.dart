@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/appbar/tabbar/tabbar.dart';
 import 'package:places/widgets/pagesbodywidgets/empty_body.dart';
-import 'package:places/const/textstyle.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/const/icons.dart';
 import 'package:places/domain/sight.dart';
@@ -24,15 +23,18 @@ class VisitingScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBarVisiting(
-          title: const Center(
+          title: Center(
             child: Text(
               CTitleTexts.titleFavorite,
-              // style: CTextStyles.subtitle,
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
           bottomBar: PreferredSize(
             preferredSize: const Size.fromHeight(40),
-            child: TabBarVisitingWidget(tablist: _tabs),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              child: TabBarVisitingWidget(tablist: _tabs),
+            ),
           ),
         ),
         body: VisitingScreenBody(visitList: visitList),

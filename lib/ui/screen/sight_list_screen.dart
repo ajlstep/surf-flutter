@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:places/const/texts.dart';
-import 'package:places/const/colors.dart';
-import 'package:places/const/textstyle.dart';
 import 'package:places/widgets/card/card_widget.dart';
 import 'package:places/mocks.dart';
 import 'package:places/widgets/appbar/appbar.dart';
@@ -19,7 +15,7 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CColors.white,
+      // backgroundColor: CColors.white,
       appBar: AppBarNormal(title: getRichText()),
       body: const SightListBody(),
     );
@@ -32,7 +28,7 @@ class _SightListScreenState extends State<SightListScreen> {
         textAlign: TextAlign.left,
         text: TextSpan(
           // style: CTextStyles.largeTitle,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.headline4,
           children: getInlineSpan(),
         ),
       ),

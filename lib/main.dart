@@ -20,14 +20,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '4. Введите текст вопроса',
-      theme: lightTheme,
+      theme: AppThemes.lightTheme,
       // theme: ThemeData(
       //   primarySwatch: Colors.indigo,
       //   colorScheme: const ColorScheme.light(),
       // ),
       // home: const screen.SightListScreen(),
-      // home: const screen2.DetailedPlace(),
-      home: screen3.VisitingScreen(visitList: VisitList),
+      home: const screen2.DetailedPlace(),
+      // home: screen3.VisitingScreen(visitList: VisitList),
     );
   }
 }

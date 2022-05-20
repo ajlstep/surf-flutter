@@ -68,10 +68,10 @@ class AppBarNormal extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.red,
-      ),
+      // systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+      //   statusBarColor: Colors.transparent,
+      //   systemNavigationBarColor: Colors.red,
+      // ),
       title: title,
       backgroundColor: CColors.white,
       elevation: 0,
