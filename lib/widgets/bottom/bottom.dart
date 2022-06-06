@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:places/const/colors.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 import 'package:places/const/icons.dart';
 
 class AppBottomBar extends StatelessWidget {
-  late int curentIndex;
-  AppBottomBar({required this.curentIndex, Key? key}) : super(key: key);
+  final int curentIndex;
+  const AppBottomBar({required this.curentIndex, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class AppBottomBar extends StatelessWidget {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: SvgIcon(
-            assetName: CIcons.list,
+            assetName: AppIcons.menuList,
             height: 24,
             width: 24,
             color: _getColor(curentIndex == 0, barTheme),
@@ -28,7 +27,7 @@ class AppBottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgIcon(
-            assetName: CIcons.map,
+            assetName: AppIcons.menuMap,
             height: 24,
             width: 24,
             color: _getColor(curentIndex == 1, barTheme),
@@ -37,7 +36,7 @@ class AppBottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgIcon(
-            assetName: CIcons.heartfull,
+            assetName: AppIcons.menuHeartFull,
             height: 24,
             width: 24,
             color: _getColor(curentIndex == 2, barTheme),
@@ -46,7 +45,7 @@ class AppBottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgIcon(
-            assetName: CIcons.settings,
+            assetName: AppIcons.menuSettings,
             height: 24,
             width: 24,
             color: _getColor(curentIndex == 3, barTheme),

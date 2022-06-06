@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/texts.dart';
+import 'package:places/domain/sight.dart';
 import 'package:places/widgets/card/card_widget.dart';
 import 'package:places/mocks.dart';
 import 'package:places/widgets/appbar/appbar.dart';
@@ -66,8 +67,8 @@ class SightListBody extends StatelessWidget {
 
   List<Widget> _getListCards() {
     List<Widget> list = [];
-    Mocks mocks = Mocks();
-    for (var item in mocks.mocks) {
+    List<Sight> mocks = mocksPredef;
+    for (var item in mocks) {
       list.add(SightCard(sight: item));
     }
     return list;

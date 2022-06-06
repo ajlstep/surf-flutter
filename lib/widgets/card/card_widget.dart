@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screen/sight_detailed.dart';
 import 'package:places/widgets/img/decoration_image.dart';
 import 'package:places/const/textstyle.dart';
 import 'package:places/const/colors.dart';
@@ -97,6 +98,22 @@ class SightCard extends StatelessWidget {
               ),
             ),
           ),
+          Positioned.fill(
+            child: Material(
+              type: MaterialType.transparency,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                highlightColor:
+                    Theme.of(context).colorScheme.background.withOpacity(0.15),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => DetailedPlace(
+                            sight: sight,
+                          )));
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -114,7 +131,7 @@ class SightCard extends StatelessWidget {
   List<Widget> getListImagedButton() {
     return const [
       SvgIcon(
-        assetName: CIcons.heart,
+        assetName: AppIcons.menuHeart,
         height: 24,
         width: 24,
         color: CColors.white,
@@ -154,7 +171,7 @@ class VisitSightCard extends SightCard {
   List<Widget> getListImagedButton() {
     return const [
       SvgIcon(
-        assetName: CIcons.share,
+        assetName: AppIcons.iconShare,
         height: 24,
         width: 24,
         color: CColors.white,
@@ -163,7 +180,7 @@ class VisitSightCard extends SightCard {
         width: 17,
       ),
       SvgIcon(
-        assetName: CIcons.heart,
+        assetName: AppIcons.menuHeart,
         height: 24,
         width: 24,
         color: CColors.white,
@@ -221,7 +238,7 @@ class WantVisitSightCard extends SightCard {
   List<Widget> getListImagedButton() {
     return const [
       SvgIcon(
-        assetName: CIcons.calendar,
+        assetName: AppIcons.iconCalendar,
         height: 24,
         width: 24,
         color: CColors.white,
@@ -230,7 +247,7 @@ class WantVisitSightCard extends SightCard {
         width: 17,
       ),
       SvgIcon(
-        assetName: CIcons.heart,
+        assetName: AppIcons.menuHeart,
         height: 24,
         width: 24,
         color: CColors.white,
