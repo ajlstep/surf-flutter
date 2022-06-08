@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/sight_detailed.dart';
+import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/img/decoration_image.dart';
 import 'package:places/const/textstyle.dart';
 import 'package:places/const/colors.dart';
@@ -14,7 +15,6 @@ import 'package:intl/date_symbol_data_local.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
-
   const SightCard({Key? key, required this.sight}) : super(key: key);
 
   @override
@@ -57,14 +57,14 @@ class SightCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        getTypeWiget(),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                              0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
-                          child: Row(
-                            children: getListImagedButton(),
-                          ),
-                        ),
+                        getTypeWiget(context),
+                        // Padding(
+                        //   padding: const EdgeInsets.fromLTRB(
+                        //       0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
+                        //   child: Row(
+                        //     children: getListImagedButton(),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -114,27 +114,39 @@ class SightCard extends StatelessWidget {
               ),
             ),
           ),
+          Positioned.fill(
+              child: Align(
+            alignment: Alignment.topRight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: getListImagedButton(context),
+            ),
+          )),
         ],
       ),
     );
   }
 
-  Widget getTypeWiget() {
+  Widget getTypeWiget(BuildContext context) {
     return Text(
       sight.type.name.toString(),
       style: CTextStyles.smallBold.copyWith(
-        color: CColors.white,
+        color: Theme.of(context).backgroundColor,
       ),
     );
   }
 
-  List<Widget> getListImagedButton() {
-    return const [
-      SvgIcon(
-        assetName: AppIcons.menuHeart,
-        height: 24,
-        width: 24,
-        color: CColors.white,
+  List<Widget> getListImagedButton(BuildContext context) {
+    return [
+      SvgButton(
+        icon: AppIcons.menuHeart,
+        onPressed: () {},
+        iconColor: Colors.red,
+        // iconColor: Theme.of(context).colorScheme.background,
+        // splashColor: Theme.of(context).colorScheme.background.withOpacity(0.15),
+        splashColor: Colors.red,
+        top: 16,
+        right: 16,
       ),
     ];
   }
@@ -168,22 +180,23 @@ class VisitSightCard extends SightCard {
       : super(key: key, sight: visits.sight);
 
   @override
-  List<Widget> getListImagedButton() {
-    return const [
-      SvgIcon(
-        assetName: AppIcons.iconShare,
-        height: 24,
-        width: 24,
-        color: CColors.white,
+  List<Widget> getListImagedButton(BuildContext context) {
+    return [
+      SvgButton(
+        top: 10,
+        right: 10,
+        icon: AppIcons.iconShare,
+        onPressed: () {},
+        iconColor: Theme.of(context).primaryColor,
+        splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
       ),
-      SizedBox(
-        width: 17,
-      ),
-      SvgIcon(
-        assetName: AppIcons.menuHeart,
-        height: 24,
-        width: 24,
-        color: CColors.white,
+      SvgButton(
+        top: 10,
+        right: 10,
+        icon: AppIcons.menuHeart,
+        onPressed: () {},
+        iconColor: Theme.of(context).primaryColor,
+        splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
       ),
     ];
   }
@@ -235,22 +248,30 @@ class WantVisitSightCard extends SightCard {
       : super(key: key, sight: visits.sight);
 
   @override
-  List<Widget> getListImagedButton() {
-    return const [
-      SvgIcon(
-        assetName: AppIcons.iconCalendar,
-        height: 24,
-        width: 24,
-        color: CColors.white,
+  List<Widget> getListImagedButton(BuildContext context) {
+    return [
+      SvgButton(
+        icon: AppIcons.iconCalendar,
+        onPressed: () {},
+        // iconColor: Colors.red,
+        iconColor: Theme.of(context).primaryColor,
+        splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
+        // splashColor: Colors.red,
+        top: 10,
+        right: 10,
       ),
-      SizedBox(
-        width: 17,
-      ),
-      SvgIcon(
-        assetName: AppIcons.menuHeart,
-        height: 24,
-        width: 24,
-        color: CColors.white,
+      // const SizedBox(
+      //   width: 17,
+      // ),
+      SvgButton(
+        icon: AppIcons.menuHeart,
+        onPressed: () {},
+        // iconColor: Colors.red,
+        iconColor: Theme.of(context).primaryColor,
+        splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
+        // splashColor: Colors.red,
+        top: 10,
+        right: 10,
       ),
     ];
   }

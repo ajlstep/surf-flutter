@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
       //   primarySwatch: Colors.indigo,
       //   colorScheme: const ColorScheme.light(),
       // ),
-      home: const screen.SightListScreen(),
+      // home: const screen.SightListScreen(),
       // home: const screen2.DetailedPlace(),
-      // home: screen3.VisitingScreen(visitList: VisitList),
+      home: screen3.VisitingScreen(visitList: VisitList),
       // home: const screen4.FiltersScreen(),
       // home: const screen5.SettingsPage(),
     );
