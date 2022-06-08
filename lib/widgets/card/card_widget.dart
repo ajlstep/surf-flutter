@@ -141,12 +141,12 @@ class SightCard extends StatelessWidget {
       SvgButton(
         icon: AppIcons.menuHeart,
         onPressed: () {},
-        iconColor: Colors.red,
-        // iconColor: Theme.of(context).colorScheme.background,
-        // splashColor: Theme.of(context).colorScheme.background.withOpacity(0.15),
-        splashColor: Colors.red,
-        top: 16,
-        right: 16,
+        // iconColor: Colors.red,
+        iconColor: Theme.of(context).primaryColor,
+        splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
+        // splashColor: Colors.red,
+        top: 10,
+        right: 10,
       ),
     ];
   }
