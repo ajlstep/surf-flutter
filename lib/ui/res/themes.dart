@@ -44,7 +44,7 @@ class AppThemes {
         subtitle2: CTextStyles.small.copyWith(color: AppColors.secondary2),
         bodyText1: CTextStyles.text.copyWith(color: AppColors.secondary),
         bodyText2: CTextStyles.small.copyWith(color: AppColors.secondary),
-        caption: CTextStyles.superSmall,
+        caption: CTextStyles.superSmall.copyWith(color: AppColors.secondary),
         button: CTextStyles.button,
       ),
       appBarTheme: base.appBarTheme.copyWith(
@@ -95,6 +95,23 @@ class AppThemes {
             ),
           ),
         ),
+      ),
+      sliderTheme: base.sliderTheme.copyWith(
+        trackHeight: 2,
+        activeTrackColor: AppColors.whiteGreen,
+        inactiveTrackColor: AppColors.inactiveBlack,
+        thumbColor: AppColors.white,
+        thumbShape: const RoundSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+        ),
+        trackShape: const RectangularSliderTrackShape(),
+        rangeThumbShape: const RoundRangeSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+          elevation: 4,
+        ),
+        rangeTrackShape: const RectangularRangeSliderTrackShape(),
       ),
     );
   }
@@ -188,6 +205,23 @@ class AppThemes {
             ),
           ),
         ),
+      ),
+      sliderTheme: base.sliderTheme.copyWith(
+        trackHeight: 2,
+        activeTrackColor: AppColors.blackGreen,
+        inactiveTrackColor: AppColors.inactiveBlack,
+        thumbColor: AppColors.white,
+        thumbShape: const RoundSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+        ),
+        trackShape: const RectangularSliderTrackShape(),
+        rangeThumbShape: const RoundRangeSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+          elevation: 4,
+        ),
+        rangeTrackShape: const RectangularRangeSliderTrackShape(),
       ),
     );
   }

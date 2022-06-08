@@ -31,6 +31,11 @@ class CTextFileds {
   static const closed = "закрыто до 09:00";
   static const sheduled = "Запланировано на";
   static const reached = "Цель достигнута";
+  static const distance = "Расстояние";
+  static const view = "ПОКАЗАТЬ";
+  static const settings = "Настройки";
+  static const darkTheme = "Тёмная тема";
+  static const viewTutorial = "Смотреть туториал";
   CTextFileds._();
 }
 

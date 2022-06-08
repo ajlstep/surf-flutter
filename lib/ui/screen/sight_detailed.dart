@@ -7,20 +7,21 @@ import 'package:places/widgets/button/buttons.dart';
 import 'package:places/const/colors.dart';
 import 'package:places/const/texts.dart';
 
-class DetailedPlace extends StatefulWidget {
-  const DetailedPlace({Key? key}) : super(key: key);
+// class DetailedPlace extends StatefulWidget {
+//   const DetailedPlace({Key? key}) : super(key: key);
 
-  @override
-  State<DetailedPlace> createState() => _DetailedPlaceState();
-}
+//   @override
+//   State<DetailedPlace> createState() => _DetailedPlaceState();
+// }
 
-class _DetailedPlaceState extends State<DetailedPlace> {
-  final _sight = Mocks().mocks[1];
+class DetailedPlace extends StatelessWidget {
+  const DetailedPlace({Key? key, required this.sight}) : super(key: key);
+  final Sight sight;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustom(imgURL: _sight.imgURL[0]),
-      body: BodyWidget(_sight),
+      appBar: AppBarCustom(imgURL: sight.imgURL[0]),
+      body: BodyWidget(sight),
     );
   }
 }

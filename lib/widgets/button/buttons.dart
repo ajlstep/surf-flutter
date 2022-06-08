@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/widgets/img/svg_icon.dart';
 
 class ButtonConstructor extends StatelessWidget {
   final Widget? text;
@@ -76,4 +77,56 @@ class Vector4 {
   final double radius;
 
   const Vector4(this.left, this.top, this.right, this.bottom, this.radius);
+}
+
+class SvgButton extends StatelessWidget {
+  const SvgButton({
+    Key? key,
+    required this.icon,
+    required this.onPressed,
+    this.bottom,
+    this.left,
+    this.top,
+    this.right,
+    this.iconColor,
+    this.splashColor,
+  }) : super(key: key);
+  final String icon;
+  final Function() onPressed;
+  final Color? splashColor;
+  final Color? iconColor;
+  final double? left;
+  final double? right;
+  final double? top;
+  final double? bottom;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          EdgeInsets.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0),
+      child: ClipOval(
+        child: SizedBox(
+          width: 30,
+          height: 30,
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              splashColor: splashColor,
+              onTap: onPressed,
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: SvgIcon(
+                  assetName: icon,
+                  color: iconColor,
+                  // width: 20,
+                  // height: 20,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

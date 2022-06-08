@@ -38,7 +38,7 @@ class VisitingScreen extends StatelessWidget {
           ),
         ),
         body: VisitingScreenBody(visitList: visitList),
-        bottomNavigationBar: AppBottomBar(curentIndex: 2),
+        bottomNavigationBar: const AppBottomBar(curentIndex: 2),
       ),
     );
   }
@@ -73,14 +73,14 @@ class VisitingScreenBody extends StatelessWidget {
       children: [
         visitWanted.isEmpty
             ? const EmptyBody(
-                icon: CIcons.card,
+                icon: AppIcons.emptyPageCard,
                 titleText: CTextFileds.empty,
                 text: CTextFileds.emptywantVisit,
               )
             : paintCard(visitWanted, true),
         visit.isEmpty
             ? const EmptyBody(
-                icon: CIcons.go,
+                icon: AppIcons.emptyPageGo,
                 titleText: CTextFileds.empty,
                 text: CTextFileds.emptyVisit,
               )
