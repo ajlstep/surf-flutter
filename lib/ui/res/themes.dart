@@ -46,6 +46,8 @@ class AppThemes {
         bodyText2: CTextStyles.small.copyWith(color: AppColors.secondary),
         caption: CTextStyles.superSmall.copyWith(color: AppColors.secondary),
         button: CTextStyles.button,
+        headline2:
+            CTextStyles.subtitlesecondary.copyWith(color: AppColors.whiteMain),
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,
@@ -156,6 +158,8 @@ class AppThemes {
         bodyText2: CTextStyles.small.copyWith(color: AppColors.white),
         caption: CTextStyles.superSmall,
         button: CTextStyles.button,
+        headline2:
+            CTextStyles.subtitlesecondary.copyWith(color: AppColors.whiteMain),
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,

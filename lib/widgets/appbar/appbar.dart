@@ -178,8 +178,44 @@ class AppBarSettings extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         title,
-        style: Theme.of(context).textTheme.headline3,
+        style: Theme.of(context).textTheme.headline4,
       ),
+    );
+  }
+}
+
+class AppBarNewSight extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarNewSight({Key? key, required this.title})
+      : preferredSize = const Size.fromHeight(56.0),
+        super(key: key);
+  final String title;
+  @override
+  final Size preferredSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.red,
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+      elevation: 0,
+      toolbarHeight: 56,
+      titleSpacing: 16,
+      centerTitle: true,
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.headline5,
+      ),
+      leading: TextButton(
+          onPressed: () {},
+          child: Text(
+            "Отмена",
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                color: Theme.of(context).colorScheme.secondaryContainer),
+          )),
+      leadingWidth: 80,
     );
   }
 }

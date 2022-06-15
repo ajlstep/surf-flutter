@@ -130,3 +130,58 @@ class SvgButton extends StatelessWidget {
     );
   }
 }
+
+class SvgButtonCustom extends StatelessWidget {
+  const SvgButtonCustom({
+    Key? key,
+    required this.icon,
+    required this.onPressed,
+    this.bottom,
+    this.left,
+    this.top,
+    this.right,
+    this.iconColor,
+    this.splashColor,
+    this.iconPadding,
+  }) : super(key: key);
+  final String icon;
+  final Function() onPressed;
+  final Color? splashColor;
+  final Color? iconColor;
+  final double? left;
+  final double? right;
+  final double? top;
+  final double? bottom;
+  final double? iconPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          EdgeInsets.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0),
+      child: ClipOval(
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            splashColor: splashColor,
+            onTap: onPressed,
+            child: Padding(
+              padding: EdgeInsets.all(iconPadding ?? 0),
+              child: SvgIcon(
+                assetName: icon,
+                color: iconColor,
+                // width: 20,
+                // height: 20,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// class ActionButton extends ButtonConstructor {
+//   ActionButton({required Function() onPressed}) : super(onPressed: onPressed);
+  
+// }

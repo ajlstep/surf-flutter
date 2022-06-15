@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/texts.dart';
-import 'package:places/domain/coordonate.dart';
-import 'package:places/domain/sight.dart';
-import 'package:places/mocks.dart';
 import 'package:places/providers/filterprovider.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/button/buttons.dart';

@@ -36,6 +36,15 @@ class CTextFileds {
   static const settings = "Настройки";
   static const darkTheme = "Тёмная тема";
   static const viewTutorial = "Смотреть туториал";
+  static const newPlace = "Новое место";
+  static const unselected = "Не выбрано";
+  static const category = "КАТЕГОРИЯ";
+  static const name = "НАЗВАНИЕ";
+  static const lon = "ШИРОТА";
+  static const lat = "ДОЛГОТА";
+  static const pointmap = "Указать на карте";
+  static const description = "ОПИСАНИЕ";
+  static const create = "СОЗДАТЬ";
   CTextFileds._();
 }
 
