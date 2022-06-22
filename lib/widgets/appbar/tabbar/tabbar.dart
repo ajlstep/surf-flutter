@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/const/textstyle.dart';
 import 'package:places/const/colors.dart';
 
 class TabBarVisitingWidget extends StatelessWidget {

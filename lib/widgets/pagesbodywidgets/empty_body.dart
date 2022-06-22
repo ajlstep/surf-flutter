@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/colors.dart';
 import 'package:places/widgets/img/svg_icon.dart';
-import 'package:places/const/icons.dart';
-import 'package:places/const/texts.dart';
 import 'package:places/const/textstyle.dart';
 
 class EmptyBody extends StatelessWidget {

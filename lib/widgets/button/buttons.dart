@@ -9,6 +9,7 @@ class ButtonConstructor extends StatelessWidget {
   final Function() onPressed;
   final double? separatorWidth;
   final Vector4 padding;
+  final double? shappe;
   const ButtonConstructor({
     Key? key,
     this.text,
@@ -17,6 +18,7 @@ class ButtonConstructor extends StatelessWidget {
     this.backgroundColor,
     this.separatorWidth,
     this.padding = const Vector4(0, 0, 0, 0, 15),
+    this.shappe,
     required this.onPressed,
   }) : super(key: key);
 
@@ -29,8 +31,14 @@ class ButtonConstructor extends StatelessWidget {
       style: backgroundColor == null
           ? null
           : Theme.of(context).elevatedButtonTheme.style?.copyWith(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(backgroundColor!)),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(backgroundColor!),
+                shape: shappe == null
+                    ? null
+                    : MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(shappe!))),
+              ),
       // style: backgroundColor == null
       //     ? null
       //     : ButtonStyle(
@@ -83,7 +91,7 @@ class SvgButton extends StatelessWidget {
   const SvgButton({
     Key? key,
     required this.icon,
-    required this.onPressed,
+    this.onPressed,
     this.bottom,
     this.left,
     this.top,
@@ -92,7 +100,7 @@ class SvgButton extends StatelessWidget {
     this.splashColor,
   }) : super(key: key);
   final String icon;
-  final Function() onPressed;
+  final void Function()? onPressed;
   final Color? splashColor;
   final Color? iconColor;
   final double? left;

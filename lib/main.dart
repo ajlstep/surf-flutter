@@ -6,6 +6,7 @@ import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:places/ui/screen/settings_screen.dart' as screen5;
 import 'package:places/ui/screen/sight_list_screen.dart' as screen;
 import 'package:places/ui/screen/sight_detailed.dart' as screen2;
+import 'package:places/ui/screen/sight_search_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart' as screen3;
 import 'package:places/ui/screen/filters_screen.dart' as screen4;
 import 'package:places/mocks.dart';
@@ -42,12 +43,13 @@ class MyApp extends StatelessWidget {
       //   primarySwatch: Colors.indigo,
       //   colorScheme: const ColorScheme.light(),
       // ),
-      // home: const screen.SightListScreen(),
+      home: const screen.SightListScreen(),
       // home: const screen2.DetailedPlace(),
       // home: screen3.VisitingScreen(visitList: VisitList),
       // home: const screen4.FiltersScreen(),
       // home: const screen5.SettingsPage(),
-      home: const AddSightScreen(),
+      // home: const AddSightScreen(),
+      // home: const SightSearchScreen(),
     );
   }
 }

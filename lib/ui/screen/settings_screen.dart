@@ -6,7 +6,6 @@ import 'package:places/const/texts.dart';
 import 'package:places/providers/themeprovide.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/bottom/bottom.dart';
-import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/divider/divider.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 import 'package:provider/provider.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
-import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 
 class ClearButtonForController extends StatelessWidget {

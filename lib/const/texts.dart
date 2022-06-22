@@ -36,7 +36,7 @@ class CTextFileds {
   static const settings = "Настройки";
   static const darkTheme = "Тёмная тема";
   static const viewTutorial = "Смотреть туториал";
-  static const newPlace = "Новое место";
+  // static const newPlace = "Новое место";
   static const unselected = "Не выбрано";
   static const category = "КАТЕГОРИЯ";
   static const name = "НАЗВАНИЕ";
@@ -45,6 +45,12 @@ class CTextFileds {
   static const pointmap = "Указать на карте";
   static const description = "ОПИСАНИЕ";
   static const create = "СОЗДАТЬ";
+  static const listsight = "Список интересных мест";
+  static const newPlace = "НОВОЕ МЕСТО";
+  static const clearSearch = "Очистить историю";
+  static const youSearch = "ВЫ ИСКАЛИ";
+  static const modifyParams = "Попробуйте изменить параметры поиска";
+  static const emptyFind = "Ничего не найдено.";
   CTextFileds._();
 }
 

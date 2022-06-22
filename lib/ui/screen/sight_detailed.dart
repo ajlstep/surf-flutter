@@ -1,6 +1,5 @@
 import 'package:places/widgets/appbar/appbar.dart';
 
-import 'package:places/mocks.dart';
 import 'package:places/domain/sight.dart';
 import 'package:flutter/material.dart';
 import 'package:places/widgets/button/buttons.dart';

@@ -167,6 +167,43 @@ class AppBarSettings extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      // bottom: PreferredSize(
+      //   child: widg!,
+      //   preferredSize: const Size.fromHeight(56),
+      // ),
+      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.red,
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+      elevation: 0,
+      toolbarHeight: 56,
+      titleSpacing: 16,
+      centerTitle: true,
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.headline4,
+      ),
+    );
+  }
+}
+
+class AppBarFindSight extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarFindSight({Key? key, required this.title, this.widg})
+      : preferredSize = const Size.fromHeight(89.0),
+        super(key: key);
+  final String title;
+  @override
+  final Size preferredSize;
+  final Widget? widg;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      bottom: PreferredSize(
+        child: widg!,
+        preferredSize: const Size.fromHeight(60),
+      ),
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Colors.red,

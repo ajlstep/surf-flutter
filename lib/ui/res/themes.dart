@@ -48,6 +48,10 @@ class AppThemes {
         button: CTextStyles.button,
         headline2:
             CTextStyles.subtitlesecondary.copyWith(color: AppColors.whiteMain),
+        headline1: CTextStyles.stext.copyWith(color: AppColors.secondary),
+        // bodyMedium: CTextStyles.stext.copyWith(color: AppColors.secondary),
+        // bodyLarge: CTextStyles.stext.copyWith(color: AppColors.secondary),
+        // bodySmall: CTextStyles.stext.copyWith(color: AppColors.secondary),
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,
@@ -160,6 +164,10 @@ class AppThemes {
         button: CTextStyles.button,
         headline2:
             CTextStyles.subtitlesecondary.copyWith(color: AppColors.whiteMain),
+        headline1: CTextStyles.stext.copyWith(color: AppColors.secondary),
+        // bodyMedium: CTextStyles.stext.copyWith(color: AppColors.white),
+        // bodyLarge: CTextStyles.stext.copyWith(color: AppColors.white),
+        // bodySmall: CTextStyles.stext.copyWith(color: AppColors.white),
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,

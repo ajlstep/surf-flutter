@@ -9,9 +9,7 @@ import 'package:places/const/textstyle.dart';
 import 'package:places/const/colors.dart';
 import 'package:places/const/gradients.dart';
 import 'package:places/const/icons.dart';
-import 'package:places/widgets/img/svg_icon.dart';
 import 'package:places/const/settings.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;

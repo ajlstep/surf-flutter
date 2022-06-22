@@ -4,10 +4,7 @@
 // details - описание достопримечательности
 // type - тип достопримечательности.
 
-import 'dart:convert';
-
 import 'package:places/const/icons.dart';
-import 'package:places/utils/http/http_query.dart';
 
 enum typeSight {
   hotel,

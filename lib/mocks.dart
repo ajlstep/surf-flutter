@@ -91,6 +91,7 @@ import 'domain/sight.dart';
 //   }
 // }
 
+// ignore: non_constant_identifier_names
 List<Visits> VisitList = [
   Visits(mocksPredef[0], true, DateTime.parse("2012-02-27 15:24")),
   Visits(mocksPredef[1], true, DateTime.parse("2012-03-27 09:00")),
@@ -221,3 +222,10 @@ const Coordonate mocksPredefCurrentLocation =
     Coordonate(47.0243841, 28.8367543);
 
 const ThemeMode mocksThemeMode = ThemeMode.light;
+
+List<String> lastSearch = [
+  "Кофейня у Рустама",
+  "Рускеала",
+  "Музей истории Российской Федерации",
+  "Зелёные рощи",
+];
