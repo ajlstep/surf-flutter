@@ -6,7 +6,7 @@ class ButtonConstructor extends StatelessWidget {
   final Widget? icon;
   final MainAxisAlignment? maAAlignment;
   final Color? backgroundColor;
-  final Function() onPressed;
+  final Function()? onPressed;
   final double? separatorWidth;
   final Vector4 padding;
   final double? shappe;

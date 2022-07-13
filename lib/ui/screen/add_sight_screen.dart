@@ -224,7 +224,7 @@ class _AddSightBodyState extends State<_AddSightBody> {
                     Consumer<AddSight>(
                       builder: (context, value, child) => ButtonConstructor(
                         onPressed:
-                            value.ifCheck ? () => print("add sight") : () {},
+                            value.ifCheck ? () => print("add sight") : null,
                         text: Text(
                           CTextFileds.create,
                           style: theme.textTheme.subtitle1?.copyWith(

@@ -55,17 +55,22 @@ class VisitingScreen extends StatelessWidget {
   }
 }
 
-class VisitingScreenBody extends StatelessWidget {
+class VisitingScreenBody extends StatefulWidget {
   final List<Visits> visitList;
 
   const VisitingScreenBody({Key? key, required this.visitList})
       : super(key: key);
 
+  @override
+  State<VisitingScreenBody> createState() => _VisitingScreenBodyState();
+}
+
+class _VisitingScreenBodyState extends State<VisitingScreenBody> {
   List<Visits> get visitWanted =>
-      visitList.where((element) => element.visit).toList();
+      widget.visitList.where((element) => element.visit).toList();
 
   List<Visits> get visit =>
-      visitList.where((element) => !element.visit).toList();
+      widget.visitList.where((element) => !element.visit).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -106,13 +111,23 @@ class VisitingScreenBody extends StatelessWidget {
       if (isWant) {
         list.add(WantVisitSightCard(
           visits: item,
+          onDelete: deleteSightAction,
         ));
       } else {
         list.add(VisitSightCard(
           visits: item,
+          onDelete: deleteSightAction,
         ));
       }
     }
     return list;
+  }
+
+  Function deleteSightAction(Visits visit) {
+    return () {
+      setState(() {
+        widget.visitList.remove(visit);
+      });
+    };
   }
 }
