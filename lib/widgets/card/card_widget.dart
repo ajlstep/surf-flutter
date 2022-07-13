@@ -9,9 +9,7 @@ import 'package:places/const/textstyle.dart';
 import 'package:places/const/colors.dart';
 import 'package:places/const/gradients.dart';
 import 'package:places/const/icons.dart';
-import 'package:places/widgets/img/svg_icon.dart';
 import 'package:places/const/settings.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -176,7 +174,9 @@ class SightCard extends StatelessWidget {
 
 class VisitSightCard extends SightCard {
   late Visits visits;
-  VisitSightCard({Key? key, required this.visits})
+  final Function(Visits)? onShare;
+  final Function(Visits)? onDelete;
+  VisitSightCard({Key? key, required this.visits, this.onShare, this.onDelete})
       : super(key: key, sight: visits.sight);
 
   @override
@@ -186,7 +186,7 @@ class VisitSightCard extends SightCard {
         top: 10,
         right: 10,
         icon: AppIcons.iconShare,
-        onPressed: () {},
+        onPressed: onShare != null ? onShare!(visits) : null,
         iconColor: Theme.of(context).primaryColor,
         splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
       ),
@@ -194,7 +194,7 @@ class VisitSightCard extends SightCard {
         top: 10,
         right: 10,
         icon: AppIcons.menuHeart,
-        onPressed: () {},
+        onPressed: onDelete != null ? onDelete!(visits) : null,
         iconColor: Theme.of(context).primaryColor,
         splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
       ),
@@ -244,15 +244,21 @@ class VisitSightCard extends SightCard {
 
 class WantVisitSightCard extends SightCard {
   late Visits visits;
-  WantVisitSightCard({Key? key, required this.visits})
-      : super(key: key, sight: visits.sight);
+  final Function(Visits)? onCalendar;
+  final Function(Visits)? onDelete;
+  WantVisitSightCard({
+    Key? key,
+    required this.visits,
+    this.onCalendar,
+    this.onDelete,
+  }) : super(key: key, sight: visits.sight);
 
   @override
   List<Widget> getListImagedButton(BuildContext context) {
     return [
       SvgButton(
         icon: AppIcons.iconCalendar,
-        onPressed: () {},
+        onPressed: onCalendar != null ? onCalendar!(visits) : null,
         // iconColor: Colors.red,
         iconColor: Theme.of(context).primaryColor,
         splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
@@ -265,7 +271,7 @@ class WantVisitSightCard extends SightCard {
       // ),
       SvgButton(
         icon: AppIcons.menuHeart,
-        onPressed: () {},
+        onPressed: onDelete != null ? onDelete!(visits) : null,
         // iconColor: Colors.red,
         iconColor: Theme.of(context).primaryColor,
         splashColor: Theme.of(context).colorScheme.background.withOpacity(1),

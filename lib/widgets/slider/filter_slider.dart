@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/providers/filterprovider.dart';
-import 'package:places/ui/screen/filters_screen.dart';
 import 'package:provider/provider.dart';
 
 class FilterSlider extends StatefulWidget {

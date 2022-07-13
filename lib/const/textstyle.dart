@@ -23,9 +23,23 @@ class CTextStyles {
     color: CColors.textColor,
     fontFamily: 'RobotoBold',
   );
+  static const TextStyle subtitlesecondary = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    height: 1.34,
+    color: CColors.textColor,
+    fontFamily: 'RobotoBold',
+  );
   static const TextStyle text = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w500,
+    height: 1.25,
+    color: CColors.textColor,
+    fontFamily: 'RobotoBold',
+  );
+  static const TextStyle stext = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
     height: 1.25,
     color: CColors.textColor,
     fontFamily: 'RobotoBold',
