@@ -114,7 +114,7 @@ class AppBarVisiting extends StatelessWidget implements PreferredSizeWidget {
 class AppBarVisitingFilter extends StatelessWidget
     implements PreferredSizeWidget {
   const AppBarVisitingFilter({Key? key, required this.clearTap})
-      : preferredSize = const Size.fromHeight(56.0),
+      : preferredSize = const Size.fromHeight(36.0),
         super(key: key);
   final Function() clearTap;
 
@@ -158,7 +158,7 @@ class AppBarVisitingFilter extends StatelessWidget
 
 class AppBarSettings extends StatelessWidget implements PreferredSizeWidget {
   const AppBarSettings({Key? key, required this.title})
-      : preferredSize = const Size.fromHeight(56.0),
+      : preferredSize = const Size.fromHeight(36.0),
         super(key: key);
   final String title;
   @override
@@ -223,7 +223,7 @@ class AppBarFindSight extends StatelessWidget implements PreferredSizeWidget {
 
 class AppBarNewSight extends StatelessWidget implements PreferredSizeWidget {
   const AppBarNewSight({Key? key, required this.title})
-      : preferredSize = const Size.fromHeight(56.0),
+      : preferredSize = const Size.fromHeight(36.0),
         super(key: key);
   final String title;
   @override
@@ -238,7 +238,7 @@ class AppBarNewSight extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: Theme.of(context).primaryColor,
       elevation: 0,
-      toolbarHeight: 56,
+      toolbarHeight: 40,
       titleSpacing: 16,
       centerTitle: true,
       title: Text(

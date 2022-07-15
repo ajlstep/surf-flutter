@@ -3,6 +3,9 @@ android/
 ios/
 web/
 windows/
+linux/
+linux
+.linux/
 .gitignnore
 .metadata
 # Fvm

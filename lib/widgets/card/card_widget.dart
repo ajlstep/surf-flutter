@@ -10,10 +10,16 @@ import 'package:places/const/colors.dart';
 import 'package:places/const/gradients.dart';
 import 'package:places/const/icons.dart';
 import 'package:places/const/settings.dart';
+import 'package:places/widgets/img/svg_icon.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
-  const SightCard({Key? key, required this.sight}) : super(key: key);
+  final bool isDismisible;
+  const SightCard({
+    Key? key,
+    required this.sight,
+    this.isDismisible = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,100 +32,154 @@ class SightCard extends StatelessWidget {
             child: DecoratedBox(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
-                child: AppImageConstructor(
-                        fit: BoxFit.cover,
-                        imgURL: sight.imgURL[0],
-                        opacity: 0.4,
-                        gradient: CGradients.whiteImageGradient)
-                    .image(),
-              ),
-              decoration: const BoxDecoration(
-                color: CColors.white,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-            ),
-          ),
-          AspectRatio(
-            aspectRatio: 3 / 2,
-            child: DecoratedBox(
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        getTypeWiget(context),
-                        // Padding(
-                        //   padding: const EdgeInsets.fromLTRB(
-                        //       0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
-                        //   child: Row(
-                        //     children: getListImagedButton(),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                  ),
-                  DecoratedBox(
-                    decoration: const BoxDecoration(
-                      color: CColors.backGround,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // const SizedBox(
-                          //   height: 96,
-                          // ),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: getColumnListText(),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 8),
+                            child: SvgIcon(
+                              assetName: AppIcons.iconBucket,
                             ),
+                          ),
+                          Text(
+                            CTextFileds.delete,
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColorLight),
                           ),
                         ],
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.error,
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
+              ),
+            ),
+          ),
+          Dismissible(
+            key: ValueKey(sight.name),
+            direction: isDismisible
+                ? DismissDirection.endToStart
+                : DismissDirection.none,
+            child: Stack(
+              children: [
+                AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: DecoratedBox(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: AppImageConstructor(
+                              fit: BoxFit.cover,
+                              imgURL: sight.imgURL[0],
+                              opacity: 0.4,
+                              gradient: CGradients.whiteImageGradient)
+                          .image(),
+                    ),
+                    decoration: const BoxDecoration(
+                      color: CColors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                   ),
-                ],
-              ),
+                ),
+                AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              getTypeWiget(context),
+                              // Padding(
+                              //   padding: const EdgeInsets.fromLTRB(
+                              //       0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
+                              //   child: Row(
+                              //     children: getListImagedButton(),
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ),
+                        DecoratedBox(
+                          decoration: const BoxDecoration(
+                            color: CColors.backGround,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                // const SizedBox(
+                                //   height: 96,
+                                // ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: getColumnListText(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(16),
+                      highlightColor: Theme.of(context)
+                          .colorScheme
+                          .background
+                          .withOpacity(0.15),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => DetailedPlace(
+                                  sight: sight,
+                                )));
+                      },
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: getListImagedButton(context),
+                    ),
+                  ),
+                ),
+              ],
             ),
+            onDismissed: onDel,
           ),
-          Positioned.fill(
-            child: Material(
-              type: MaterialType.transparency,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(16),
-                highlightColor:
-                    Theme.of(context).colorScheme.background.withOpacity(0.15),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => DetailedPlace(
-                            sight: sight,
-                          )));
-                },
-              ),
-            ),
-          ),
-          Positioned.fill(
-              child: Align(
-            alignment: Alignment.topRight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: getListImagedButton(context),
-            ),
-          )),
         ],
       ),
     );
@@ -170,6 +230,8 @@ class SightCard extends StatelessWidget {
       ),
     ];
   }
+
+  void onDel(DismissDirection dir) {}
 }
 
 class VisitSightCard extends SightCard {
@@ -177,7 +239,15 @@ class VisitSightCard extends SightCard {
   final Function(Visits)? onShare;
   final Function(Visits)? onDelete;
   VisitSightCard({Key? key, required this.visits, this.onShare, this.onDelete})
-      : super(key: key, sight: visits.sight);
+      : super(key: key, sight: visits.sight, isDismisible: true);
+
+  @override
+  void onDel(DismissDirection dir) {
+    var fn = onDelete != null ? onDelete!(visits) : null;
+    if (fn != null) {
+      fn();
+    }
+  }
 
   @override
   List<Widget> getListImagedButton(BuildContext context) {
@@ -251,7 +321,15 @@ class WantVisitSightCard extends SightCard {
     required this.visits,
     this.onCalendar,
     this.onDelete,
-  }) : super(key: key, sight: visits.sight);
+  }) : super(key: key, sight: visits.sight, isDismisible: true);
+
+  @override
+  void onDel(DismissDirection dir) {
+    var fn = onDelete != null ? onDelete!(visits) : null;
+    if (fn != null) {
+      fn();
+    }
+  }
 
   @override
   List<Widget> getListImagedButton(BuildContext context) {
