@@ -45,10 +45,10 @@ class MyApp extends StatelessWidget {
       // ),
       // home: const screen.SightListScreen(),
       // home: const screen2.DetailedPlace(),
-      home: screen3.VisitingScreen(visitList: VisitList),
+      // home: screen3.VisitingScreen(visitList: VisitList),
       // home: const screen4.FiltersScreen(),
       // home: const screen5.SettingsPage(),
-      // home: const AddSightScreen(),
+      home: const AddSightScreen(),
       // home: const SightSearchScreen(),
     );
   }
