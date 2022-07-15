@@ -86,6 +86,9 @@ class _AddSightBodyState extends State<_AddSightBody> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: 24,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
