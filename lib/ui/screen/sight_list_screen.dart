@@ -10,7 +10,9 @@ import 'package:places/widgets/card/card_widget.dart';
 import 'package:places/mocks.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/img/svg_icon.dart';
+import 'package:places/widgets/scrool/over_scrool_glow_absorber.dart';
 import 'package:places/widgets/text_field/textfield.dart';
+import 'dart:io' show Platform;
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -107,9 +109,20 @@ class SightListBody extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: _getListCards(),
+          // SingleChildScrollView(
+          //   child: Column(
+          //     children: _getListCards(),
+          //   ),
+          // ),
+          OverScrollGlowAbsorber(
+            child: ListView.builder(
+              physics: !Platform.isAndroid
+                  ? const BouncingScrollPhysics()
+                  : const ClampingScrollPhysics(),
+              itemCount: mocksPredef.length,
+              itemBuilder: (context, index) {
+                return SightCard(sight: mocksPredef[index]);
+              },
             ),
           ),
           Column(

@@ -51,6 +51,7 @@ class CTextFileds {
   static const youSearch = "ВЫ ИСКАЛИ";
   static const modifyParams = "Попробуйте изменить параметры поиска";
   static const emptyFind = "Ничего не найдено.";
+  static const delete = "Удалить";
   CTextFileds._();
 }
 

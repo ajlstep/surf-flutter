@@ -7,6 +7,7 @@ import 'package:places/utils/formaters/add_formater.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/divider/divider.dart';
+import 'package:places/widgets/img/svg_icon.dart';
 import 'package:places/widgets/text/label_title.dart';
 // import 'package:places/widgets/text_field/clear_text_controller.dart';
 import 'package:places/widgets/text_field/textfield.dart';
@@ -48,6 +49,7 @@ class _AddSightBodyState extends State<_AddSightBody> {
   late PageTextControlers _pageContr;
   late AddSight provider;
   late List<FocusNode> focusList;
+  List<String> lst = myList.toList();
   @override
   void initState() {
     super.initState();
@@ -72,7 +74,21 @@ class _AddSightBodyState extends State<_AddSightBody> {
               child: IntrinsicHeight(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: const EdgeInsets.all(0.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: getList(),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 24,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -198,7 +214,7 @@ class _AddSightBodyState extends State<_AddSightBody> {
                           ),
                         ),
                         const SizedBox(
-                          height: 37,
+                          height: 24,
                         ),
 
                         const LabelTitleCustom(
@@ -259,6 +275,100 @@ class _AddSightBodyState extends State<_AddSightBody> {
       }
     }
   }
+
+  Function(TapUpDetails) deletePhoto(String obj) {
+    return (TapUpDetails details) {
+      setState(() {
+        lst.remove(obj);
+      });
+    };
+  }
+
+  Function(DismissDirection) dimisPhoto(String obj) {
+    return (DismissDirection details) {
+      setState(() {
+        lst.remove(obj);
+      });
+    };
+  }
+
+  void addPhoto(TapUpDetails det) {
+    setState(() {
+      for (var element in myList) {
+        if (lst.indexOf(element) == -1) {
+          lst.add(element);
+          break;
+        }
+      }
+    });
+  }
+
+  List<Widget> getList() {
+    bool ifFirst = true;
+    List<Widget> myLst = [];
+    for (var el in lst) {
+      ifFirst
+          ? myLst.add(
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: GestureDetector(
+                  onTapUp: addPhoto,
+                  child: Container(
+                    width: 72,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          : myLst.add(
+              Dismissible(
+                key: ValueKey(el),
+                direction: DismissDirection.up,
+                onDismissed: dimisPhoto(el),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Container(
+                    width: 72,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: GestureDetector(
+                            key: ValueKey(el),
+                            onTapUp: deletePhoto(el),
+                            child: const SvgIcon(
+                              assetName: AppIcons.iconClear,
+                              color: Colors.white,
+                              width: 23,
+                              height: 23,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          el,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+      ifFirst ? ifFirst = !ifFirst : null;
+    }
+    return myLst;
+  }
 }
 
 class PageTextControlers {
@@ -270,3 +380,16 @@ class PageTextControlers {
   final inputFormatersLon = [SightLocationFormater(ifLong: false)];
   final inputFormatersLat = [SightLocationFormater(ifLong: true)];
 }
+
+List<String> myList = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+];

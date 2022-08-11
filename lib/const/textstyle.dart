@@ -60,7 +60,7 @@ class CTextStyles {
   );
   static const TextStyle superSmall = TextStyle(
     fontSize: 12,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     height: 1.334,
     color: CColors.textColor,
     fontFamily: 'RobotoBold',
