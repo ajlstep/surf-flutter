@@ -86,7 +86,7 @@ class _AddSightBodyState extends State<_AddSightBody> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 24,
                     ),
                     Column(

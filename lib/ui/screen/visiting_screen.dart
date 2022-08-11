@@ -66,11 +66,15 @@ class VisitingScreenBody extends StatefulWidget {
 }
 
 class _VisitingScreenBodyState extends State<VisitingScreenBody> {
-  List<Visits> get visitWanted =>
-      widget.visitList.where((element) => element.visit).toList();
+  List<Visits> visitWanted = [];
+  List<Visits> visits = [];
 
-  List<Visits> get visit =>
-      widget.visitList.where((element) => !element.visit).toList();
+  @override
+  void initState() {
+    super.initState();
+    visitWanted = widget.visitList.where((element) => element.visit).toList();
+    visits = widget.visitList.where((element) => !element.visit).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,14 +86,14 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
                 titleText: CTextFileds.empty,
                 text: CTextFileds.emptywantVisit,
               )
-            : paintCard(visitWanted, true),
-        visit.isEmpty
+            : paintCard2(visitWanted, true),
+        visits.isEmpty
             ? const EmptyBody(
                 icon: AppIcons.emptyPageGo,
                 titleText: CTextFileds.empty,
                 text: CTextFileds.emptyVisit,
               )
-            : paintCard(visit, false),
+            : paintCard2(visits, false),
       ],
     );
   }
@@ -105,19 +109,58 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
     );
   }
 
+  Widget paintCard2(List<Visits> vlist, bool isWant) {
+    return ReorderableListView(
+      buildDefaultDragHandles: false,
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      children: _getListCards(vlist, isWant),
+      onReorder: fnOnReorder(vlist),
+    );
+    // return Padding(
+    //   padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+    //   child: SingleChildScrollView(
+    //     child: Column(
+    //       children: _getListCards(vlist, isWant),
+    //     ),
+    //   ),
+    // );
+  }
+
+  Function(int, int) fnOnReorder(List<Visits> vlist) {
+    return (int oldIndex, int newIndex) {
+      setState(() {
+        if (oldIndex < newIndex) {
+          newIndex -= 1;
+        }
+        final Visits item = vlist.removeAt(oldIndex);
+        vlist.insert(newIndex, item);
+      });
+    };
+  }
+
   List<Widget> _getListCards(List<Visits> vlist, bool isWant) {
     List<Widget> list = [];
     for (var item in vlist) {
       if (isWant) {
-        list.add(WantVisitSightCard(
-          visits: item,
-          onDelete: deleteSightAction,
-        ));
+        list.add(
+          Container(
+            key: Key(item.sight.name),
+            child: WantVisitSightCard(
+              visits: item,
+              onDelete: deleteSightAction,
+            ),
+          ),
+        );
       } else {
-        list.add(VisitSightCard(
-          visits: item,
-          onDelete: deleteSightAction,
-        ));
+        list.add(
+          Container(
+            key: Key(item.sight.name),
+            child: VisitSightCard(
+              visits: item,
+              onDelete: deleteSightAction2,
+            ),
+          ),
+        );
       }
     }
     return list;
@@ -126,7 +169,15 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
   Function deleteSightAction(Visits visit) {
     return () {
       setState(() {
-        widget.visitList.remove(visit);
+        visitWanted.remove(visit);
+      });
+    };
+  }
+
+  Function deleteSightAction2(Visits visit) {
+    return () {
+      setState(() {
+        visits.remove(visit);
       });
     };
   }
