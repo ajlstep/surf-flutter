@@ -19,7 +19,7 @@ class DetailedPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustom(imgURL: sight.imgURL[0]),
+      appBar: AppBarCustom(imgURL: sight.imgURL),
       body: BodyWidget(sight),
     );
   }
@@ -50,13 +50,13 @@ class BodyWidget extends StatelessWidget {
               children: [
                 ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width / 8,
+                    maxWidth: MediaQuery.of(context).size.width / 7,
                     minWidth: 5,
                   ),
                   child: Text(
                     sight.type.name.toString() + " dsadsad sa dsa dsa",
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.clip,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),

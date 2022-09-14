@@ -64,6 +64,12 @@ class AppIcons {
   static const String iconFilter = "$_pathOther/filter.svg";
   static const String iconBucket = "$_pathOther/bucket.svg";
 
+  // tutorial
+  static const String tutorialAdd = "$_path/tutorial/add.svg";
+  static const String tutorialTravelBag = "$_path/tutorial/travel_bag.svg";
+  static const String tutorialWayIndicator =
+      "$_path/tutorial/way_indicator.svg";
+
   static const String _path = AppSettings.pathIcons;
   static const String _pathOther = '$_path/other';
 
