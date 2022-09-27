@@ -27,7 +27,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => Filters()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
-        ChangeNotifierProvider(create: (context) => AppBarButtonProvider()),
+        // ChangeNotifierProvider(create: (context) => AppBarButtonProvider()),
       ],
       child: const MyApp(),
     ),

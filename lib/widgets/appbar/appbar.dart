@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/const/icons.dart';
-import 'package:places/providers/buttonappbarprovider.dart';
+// import 'package:places/providers/buttonappbarprovider.dart';
+import 'package:places/utils/data_objects/button_visibility.dart';
 import 'package:places/widgets/button/back_button.dart';
 import 'package:places/widgets/img/decoration_image.dart';
 import 'package:places/const/colors.dart';
@@ -225,10 +228,12 @@ class AppBarVisitingFilter extends StatelessWidget
 }
 
 class AppBarOnBoarding extends StatefulWidget implements PreferredSizeWidget {
-  const AppBarOnBoarding({Key? key, required this.skipTap})
+  const AppBarOnBoarding(
+      {Key? key, required this.skipTap, required this.buttContr})
       : preferredSize = const Size.fromHeight(36.0),
         super(key: key);
   final Function() skipTap;
+  final ButtonVisibility buttContr;
 
   @override
   final Size preferredSize;
@@ -238,15 +243,33 @@ class AppBarOnBoarding extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBarOnBoardingState extends State<AppBarOnBoarding> {
-  bool visible = false;
+  bool visible = true;
+  late StreamSubscription<dynamic> _streamSubscription;
 
   @override
   void initState() {
-    context.read<AppBarButtonProvider>().stream.listen((event) {
+    _streamSubscription = widget.buttContr.stream.listen((event) {
       visible = event;
       setState(() {});
     });
+    // context.read<AppBarButtonProvider>().stream.listen((event) {
+    //   visible = event;
+    //   setState(() {});
+    // });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // _streamSubscription.cancel();
+    widget.buttContr.remove();
+    super.dispose();
+    // context.read<AppBarButtonProvider>().removeListener(() {});
+  }
+
+  void skip() {
+    // dispose();
+    widget.skipTap();
   }
 
   @override
@@ -274,7 +297,7 @@ class _AppBarOnBoardingState extends State<AppBarOnBoarding> {
           padding: const EdgeInsets.only(right: 16),
           child: visible
               ? TextButton(
-                  onPressed: widget.skipTap,
+                  onPressed: skip,
                   child: Text(
                     "Пропустить",
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(

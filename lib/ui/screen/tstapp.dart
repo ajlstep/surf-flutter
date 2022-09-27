@@ -50,5 +50,5 @@ var list = {
   "test page1": const TestPAge(),
   "test page2": const TestPage2(),
   "test page3": MyHomePage(),
-  "onboarding": const OnboardingScreen(),
+  "onboarding": OnboardingScreen(),
 };

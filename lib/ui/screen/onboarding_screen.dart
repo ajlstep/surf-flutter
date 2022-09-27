@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
-import 'package:places/providers/buttonappbarprovider.dart';
+// import 'package:places/providers/buttonappbarprovider.dart';
+import 'package:places/utils/data_objects/button_visibility.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/pagesbodywidgets/empty_body.dart';
@@ -8,23 +9,25 @@ import 'package:places/widgets/tabindicator/customcircularindicator.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  OnboardingScreen({Key? key}) : super(key: key);
+  final ButtonVisibility buttContr = ButtonVisibility(visible: true);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarOnBoarding(
-        skipTap: () {
-          Navigator.pop(context);
-        },
-      ),
-      body: const OnBoardingBody(),
+          skipTap: () {
+            Navigator.pop(context);
+          },
+          buttContr: buttContr),
+      body: OnBoardingBody(buttContr: buttContr),
     );
   }
 }
 
 class OnBoardingBody extends StatefulWidget {
-  const OnBoardingBody({Key? key}) : super(key: key);
+  const OnBoardingBody({Key? key, required this.buttContr}) : super(key: key);
+  final ButtonVisibility buttContr;
 
   @override
   State<OnBoardingBody> createState() => _OnBoardingBodyState();
@@ -48,16 +51,25 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
       width: 24,
       controller: _controller,
     );
-    final themeProvider = context.read<AppBarButtonProvider>();
+    // final buttonProvider = context.read<AppBarButtonProvider>();
     _pageController.addListener(() {
       var pageNow = _pageController.page!.round();
       if (pageNow == 2) {
-        themeProvider.setInvisible();
+        // buttonProvider.setInvisible();
+        widget.buttContr.setF();
       } else {
-        themeProvider.setVisible();
+        // buttonProvider.setVisible();
+        widget.buttContr.setT();
       }
       _controller.animateTo(pageNow);
     });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    // context.read<AppBarButtonProvider>().dispoze();
+    super.dispose();
   }
 
   @override

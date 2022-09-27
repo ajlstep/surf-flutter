@@ -11,6 +11,11 @@ class AppBarButtonProvider extends ChangeNotifier {
     streamController.add(_isVisible);
   }
 
+  void dispoze() {
+    // streamController.stream.reduce((previous, element) => true);
+    // streamController.close();
+  }
+
   void setVisible() {
     if (!_isVisible) {
       streamController.add(!_isVisible);
