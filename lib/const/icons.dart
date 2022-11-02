@@ -63,6 +63,7 @@ class AppIcons {
   static const String iconSearch = "$_pathOther/search.svg";
   static const String iconFilter = "$_pathOther/filter.svg";
   static const String iconBucket = "$_pathOther/bucket.svg";
+  static const String iconSplash = "$_pathOther/subtract.svg";
 
   // tutorial
   static const String tutorialAdd = "$_path/tutorial/add.svg";

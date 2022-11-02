@@ -9,6 +9,7 @@ import 'package:places/ui/screen/settings_screen.dart' as screen5;
 import 'package:places/ui/screen/sight_list_screen.dart' as screen;
 import 'package:places/ui/screen/sight_detailed.dart' as screen2;
 import 'package:places/ui/screen/sight_search_screen.dart';
+import 'package:places/ui/screen/spalsh_screen.dart';
 import 'package:places/ui/screen/tst.dart';
 import 'package:places/ui/screen/tst2.dart';
 import 'package:places/ui/screen/tst3.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
       // home: const TestPage2(),
       // home: const OnboardingScreen(),
       // home: MyHomePage(),
-      home: const TestPages(),
+      home: const SplashScreen(),
     );
   }
 }
