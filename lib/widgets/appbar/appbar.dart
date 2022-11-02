@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/const/icons.dart';
+import 'package:places/utils/data_objects/app_bar_dimensions.dart';
 // import 'package:places/providers/buttonappbarprovider.dart';
 import 'package:places/utils/data_objects/button_visibility.dart';
 import 'package:places/widgets/button/back_button.dart';
@@ -12,6 +13,79 @@ import 'package:places/const/gradients.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 import 'package:places/widgets/tabindicator/customtabindicator.dart';
 import 'package:provider/provider.dart';
+
+class CustomSliverAppBar extends StatefulWidget {
+  const CustomSliverAppBar({Key? key, required this.imgURL}) : super(key: key);
+  final List<String> imgURL;
+
+  @override
+  State<CustomSliverAppBar> createState() => _CustomSliverAppBarState();
+}
+
+class _CustomSliverAppBarState extends State<CustomSliverAppBar>
+    with SingleTickerProviderStateMixin {
+  final PageController _pageController = PageController(viewportFraction: 0.85);
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      // print(_pageController.page!.round());
+      setState(() {
+        _tabController.animateTo(_pageController.page!.round(),
+            duration: const Duration(milliseconds: 300));
+      });
+    });
+    _tabController = TabController(length: widget.imgURL.length, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return SliverAppBar(
+      expandedHeight: 336,
+      flexibleSpace: PageView(
+        controller: _pageController,
+        padEnds: false,
+        scrollDirection: Axis.horizontal,
+        children: widget.imgURL
+            .map((e) => AppImageConstructor(
+                  fit: BoxFit.cover,
+                  imgURL: e,
+                  opacity: 0.4,
+                  gradient: CGradients.whiteImageGradient,
+                ).image())
+            .toList(),
+      ),
+      leading: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 16,
+          ),
+          BackButtonCustom(
+            color: Theme.of(context).colorScheme.onBackground,
+            onTap: () => Navigator.pop(context),
+            size: const Size(32, 32),
+            borderRadius: 10,
+            icon: SvgIcon(
+              assetName: AppIcons.iconArrow,
+              color: theme.colorScheme.primary,
+              // height: 10,
+              // width: 10,
+            ),
+          ),
+        ],
+      ),
+      bottom: PreferredSize(
+          child: CustomTabIndicator(controller: _tabController),
+          preferredSize: const Size.fromHeight(7.57)),
+      titleSpacing: 0,
+      elevation: 0,
+    );
+  }
+}
 
 class AppBarCustom extends StatefulWidget implements PreferredSizeWidget {
   const AppBarCustom({Key? key, required this.imgURL})
@@ -244,11 +318,10 @@ class AppBarOnBoarding extends StatefulWidget implements PreferredSizeWidget {
 
 class _AppBarOnBoardingState extends State<AppBarOnBoarding> {
   bool visible = true;
-  late StreamSubscription<dynamic> _streamSubscription;
 
   @override
   void initState() {
-    _streamSubscription = widget.buttContr.stream.listen((event) {
+    widget.buttContr.stream.listen((event) {
       visible = event;
       setState(() {});
     });
@@ -377,6 +450,68 @@ class AppBarFindSight extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
+}
+
+class SliverAppBarFindSight extends StatefulWidget
+    implements PreferredSizeWidget {
+  const SliverAppBarFindSight(
+      {Key? key, required this.widg, required this.animData})
+      : super(key: key);
+  final Widget? widg;
+  final AppBarAnimateData animData;
+
+  @override
+  State<SliverAppBarFindSight> createState() => _SliverAppBarFindSightState();
+
+  @override
+  Size get preferredSize => throw UnimplementedError();
+}
+
+class _SliverAppBarFindSightState extends State<SliverAppBarFindSight> {
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return SliverAppBar(
+      pinned: true,
+      expandedHeight: widget.animData.width,
+      // elevation: 15,
+      toolbarHeight: 25,
+      // titleSpacing: 0,
+
+      // bottom: widget.widg != null
+      //     ? PreferredSize(
+      //         child: widget.widg!,
+      //         preferredSize: widget.animData.ob
+      //             ? const Size.fromHeight(60)
+      //             : const Size(0, 0),
+      //       )
+      //     : null,
+      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.red,
+      ),
+      centerTitle: true,
+      backgroundColor: theme.primaryColor,
+      flexibleSpace: Align(
+        alignment: FractionalOffset.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: widget.animData.border,
+            ),
+            Text(
+              widget.animData.txt,
+              style: theme.textTheme.headline4!
+                  .copyWith(fontSize: widget.animData.value),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Size get preferredSize => throw UnimplementedError();
 }
 
 class AppBarNewSight extends StatelessWidget implements PreferredSizeWidget {

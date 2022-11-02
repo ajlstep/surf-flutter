@@ -25,6 +25,7 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
   final PageSearchData pageSearchData = PageSearchData();
   @override
   Widget build(BuildContext context) {
+    print("${pageSearchData.controller}");
     return Scaffold(
       // backgroundColor: CColors.white,
       appBar: AppBarFindSight(
@@ -209,15 +210,15 @@ class FinderListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Stack(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 13),
-                child: Text(
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 0, 13),
+            child: Stack(
+              children: [
+                Text(
                   text,
                   style: theme.textTheme.bodyText1
                       ?.copyWith(color: theme.colorScheme.secondaryContainer),
@@ -225,28 +226,30 @@ class FinderListWidget extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ),
-            SvgButton(
-              icon: AppIcons.iconDelete,
-              onPressed: onClear,
-              iconColor: theme.colorScheme.secondaryContainer,
-            )
-          ],
-        ),
-        Positioned.fill(
-          child: Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(16),
-              highlightColor:
-                  Theme.of(context).colorScheme.background.withOpacity(0.15),
-              onTap: () {
-                pageSearchData.clickSearchList(text);
-              },
+                Positioned.fill(
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(16),
+                      highlightColor: Theme.of(context)
+                          .colorScheme
+                          .background
+                          .withOpacity(0.15),
+                      onTap: () {
+                        pageSearchData.clickSearchList(text);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
+        SvgButton(
+          icon: AppIcons.iconDelete,
+          onPressed: onClear,
+          iconColor: theme.colorScheme.secondaryContainer,
+        )
       ],
     );
   }
@@ -259,6 +262,10 @@ class PageSearchData {
   final List<Sight> mockList = mocksPredef.toList();
   List<Sight> filteredMock = mocksPredef.toList();
   Function()? funSetState;
+
+  // void dispose() {
+  //   controller.dispose();
+  // }
 
   void onSubmited(String text) {
     listLastSearch.add(text);
