@@ -5,6 +5,7 @@ import 'package:places/ui/screen/settings_screen.dart';
 import 'package:places/ui/screen/sigh_list_sliver.dart';
 import 'package:places/ui/screen/sigh_list_sliver2.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
+import 'package:places/ui/screen/spalsh_screen.dart';
 import 'package:places/ui/screen/tst.dart';
 import 'package:places/ui/screen/tst2.dart';
 import 'package:places/ui/screen/tst3.dart';
@@ -57,4 +58,5 @@ var list = {
   "test page3": MyHomePage(),
   "onboarding": OnboardingScreen(),
   "test page4": const TestPage5(),
+  "spash screen": const SplashScreen(),
 };
