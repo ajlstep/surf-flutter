@@ -4,6 +4,7 @@ import 'package:places/const/texts.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:places/ui/screen/sight_search_screen.dart';
+import 'package:places/utils/data_objects/app_bar_dimensions.dart';
 import 'package:places/widgets/bottom/bottom.dart';
 import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/card/card_widget.dart';
@@ -23,6 +24,13 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   TextEditingController controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,33 +78,6 @@ class _SightListScreenState extends State<SightListScreen> {
       bottomNavigationBar: const AppBottomBar(curentIndex: 2),
     );
   }
-
-  // Widget getRichText() {
-  //   return Padding(
-  //     padding: const EdgeInsets.fromLTRB(16, 64, 16, 20),
-  //     child: RichText(
-  //       textAlign: TextAlign.left,
-  //       text: TextSpan(
-  //         // style: CTextStyles.largeTitle,
-  //         style: Theme.of(context).textTheme.headline4,
-  //         children: getInlineSpan(),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // List<TextSpan> getInlineSpan() {
-  //   List<TextSpan> list = [];
-  //   for (var item in CTitleTexts.textAndColors.entries) {
-  //     list.add(TextSpan(
-  //       text: item.key,
-  //       style: TextStyle(
-  //         color: item.value,
-  //       ),
-  //     ));
-  //   }
-  //   return list;
-  // }
 }
 
 class SightListBody extends StatelessWidget {

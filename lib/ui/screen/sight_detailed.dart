@@ -19,8 +19,29 @@ class DetailedPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustom(imgURL: sight.imgURL),
-      body: BodyWidget(sight),
+      // appBar: AppBarCustom(imgURL: sight.imgURL),
+      body: PreBodyWidget(sight: sight),
+    );
+  }
+}
+
+class PreBodyWidget extends StatelessWidget {
+  const PreBodyWidget({Key? key, required this.sight}) : super(key: key);
+  final Sight sight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: CustomScrollView(
+        slivers: [
+          CustomSliverAppBar(
+            imgURL: sight.imgURL,
+          ),
+          SliverToBoxAdapter(
+            child: BodyWidget(sight),
+          ),
+        ],
+      ),
     );
   }
 }
