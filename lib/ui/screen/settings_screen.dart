@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBarSettings(
         title: CTextFileds.settings,
       ),
-      bottomNavigationBar: AppBottomBar(curentIndex: 2),
+      bottomNavigationBar: AppBottomBar(curentIndex: 3),
       body: SettingsBody(),
     );
   }

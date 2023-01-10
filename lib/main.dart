@@ -6,6 +6,8 @@ import 'package:places/providers/themeprovide.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:places/ui/screen/onboarding_screen.dart';
 import 'package:places/ui/screen/settings_screen.dart' as screen5;
+import 'package:places/ui/screen/settings_screen.dart';
+import 'package:places/ui/screen/sigh_list_sliver2.dart';
 import 'package:places/ui/screen/sight_list_screen.dart' as screen;
 import 'package:places/ui/screen/sight_detailed.dart' as screen2;
 import 'package:places/ui/screen/sight_search_screen.dart';
@@ -17,6 +19,7 @@ import 'package:places/ui/screen/tstapp.dart';
 import 'package:places/ui/screen/visiting_screen.dart' as screen3;
 import 'package:places/ui/screen/filters_screen.dart' as screen4;
 import 'package:places/mocks.dart';
+import 'package:places/ui/screen/visiting_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'package:places/ui/res/themes.dart';
@@ -47,6 +50,12 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: context.watch<ThemeProvider>().themeMode,
+      routes: {
+        "/": (context) => const SplashScreen(),
+        "/list": (context) => const SightListScreenSliver2(),
+        "/visiting": (context) => VisitingScreen(visitList: VisitList),
+        "/settings": (context) => const SettingsPage(),
+      },
       // theme: ThemeData(
       //   primarySwatch: Colors.indigo,
       //   colorScheme: const ColorScheme.light(),
@@ -62,7 +71,8 @@ class MyApp extends StatelessWidget {
       // home: const TestPage2(),
       // home: const OnboardingScreen(),
       // home: MyHomePage(),
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      initialRoute: "/",
     );
   }
 }

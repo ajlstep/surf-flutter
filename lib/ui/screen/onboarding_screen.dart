@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
+import 'package:places/ui/screen/sigh_list_sliver2.dart';
 // import 'package:places/providers/buttonappbarprovider.dart';
 import 'package:places/utils/data_objects/button_visibility.dart';
 import 'package:places/widgets/appbar/appbar.dart';
@@ -110,7 +111,9 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 ),
                 child: ButtonConstructor(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SightListScreenSliver2(),
+                    ));
                   },
                   backgroundColor: Theme.of(context).colorScheme.tertiary,
                   text: Text("НА СТАРТ"),

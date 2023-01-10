@@ -24,7 +24,7 @@ class HttpQuery {
   static Map<String, String> _headers = {};
   static Object? _body;
   static Map<String, String> _coockies = {};
-  static String _protocol = "";
+  static String _method = "";
   static bool _isSecure = false;
   late http.Response _response;
   late String _responseString;
@@ -35,7 +35,7 @@ class HttpQuery {
   set header(Map<String, String> header) => _headers = header;
   set coockie(Map<String, String> coockie) => _coockies = coockie;
   set body(Object body) => _body = body;
-  set protocol(String protocol) => _protocol = protocol.toLowerCase();
+  set method(String method) => _method = method.toLowerCase();
   set isSecure(bool isSecure) => _isSecure = isSecure;
 
   http.Response get responce {
@@ -124,7 +124,7 @@ class HttpQuery {
       _body = body;
     }
     if (protocol != null) {
-      _protocol = protocol;
+      _method = protocol;
     }
     if (isSecure != null) {
       _isSecure = isSecure;
@@ -132,7 +132,7 @@ class HttpQuery {
   }
 
   Future<http.Response?> exec() async {
-    switch (_protocol) {
+    switch (_method) {
       case "post":
         _response =
             await http.post(uri, headers: header, body: _body, encoding: enc);

@@ -77,8 +77,10 @@ class AppThemes {
         backgroundColor: AppColors.white,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedItemColor: AppColors.whiteMain,
-        unselectedItemColor: AppColors.secondary,
+        selectedItemColor: const Color.fromARGB(255, 196, 198, 223),
+        unselectedItemColor: const Color.fromARGB(255, 8, 16, 92),
+        // selectedItemColor: AppColors.whiteMain,
+        // unselectedItemColor: AppColors.secondary,
         type: BottomNavigationBarType.fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(

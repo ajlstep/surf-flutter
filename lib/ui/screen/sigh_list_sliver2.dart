@@ -135,6 +135,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      bottomNavigationBar: const AppBottomBar(curentIndex: 0),
     );
   }
 

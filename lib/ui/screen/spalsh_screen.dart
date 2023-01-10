@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
+import 'package:places/ui/screen/onboarding_screen.dart';
 import 'package:places/ui/screen/sigh_list_sliver2.dart';
 import 'package:places/ui/screen/tstapp.dart';
+import 'package:places/utils/data_objects/app_data.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -61,7 +63,13 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).push(
           MaterialPageRoute(
             // builder: (context) => const SightListScreenSliver2(),
-            builder: (context) => const TestPages(),
+            builder: (context) {
+              if (AppAuxData().ifFirstOpen) {
+                return OnboardingScreen();
+              } else {
+                return const SightListScreenSliver2();
+              }
+            },
           ),
         );
       },
