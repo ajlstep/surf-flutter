@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:places/const/paddings.dart';
+import 'package:places/const/sizes.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/sight_detailed.dart';
@@ -24,16 +26,16 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: AppPadding.addSightExtern,
       child: Stack(
         children: [
           AspectRatio(
             aspectRatio: 3 / 2,
             child: DecoratedBox(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: AppSizes.borderCircular15,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  padding: AppPadding.inputWidgetsInternPadding,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -77,7 +79,7 @@ class SightCard extends StatelessWidget {
                   aspectRatio: 3 / 2,
                   child: DecoratedBox(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: AppSizes.borderCircular15,
                       child: AppImageConstructor(
                               fit: BoxFit.cover,
                               imgURL: sight.imgURL[0],
@@ -159,10 +161,27 @@ class SightCard extends StatelessWidget {
                           .background
                           .withOpacity(0.15),
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => DetailedPlace(
-                                  sight: sight,
-                                )));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //     builder: (context) => DetailedPlace(
+                        //           sight: sight,
+                        //         )));
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => DraggableScrollableSheet(
+                            snap: true,
+                            initialChildSize: 0.8,
+                            builder: (context, scrollController) {
+                              return DetailedPlace(
+                                sight: sight,
+                                controller: scrollController,
+                              );
+                            },
+                          ),
+                          isScrollControlled: true,
+                          // constraints: BoxConstraints(
+                          //     maxHeight:
+                          //         MediaQuery.of(context).size.height * 0.7),
+                        );
                       },
                     ),
                   ),

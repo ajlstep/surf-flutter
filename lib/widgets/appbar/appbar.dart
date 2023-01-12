@@ -15,8 +15,11 @@ import 'package:places/widgets/tabindicator/customtabindicator.dart';
 import 'package:provider/provider.dart';
 
 class CustomSliverAppBar extends StatefulWidget {
-  const CustomSliverAppBar({Key? key, required this.imgURL}) : super(key: key);
+  const CustomSliverAppBar(
+      {Key? key, required this.imgURL, this.isBottomSheet = false})
+      : super(key: key);
   final List<String> imgURL;
+  final bool isBottomSheet;
 
   @override
   State<CustomSliverAppBar> createState() => _CustomSliverAppBarState();
@@ -44,6 +47,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar>
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return SliverAppBar(
+      automaticallyImplyLeading: false,
       expandedHeight: 336,
       flexibleSpace: PageView(
         controller: _pageController,
@@ -58,26 +62,28 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar>
                 ).image())
             .toList(),
       ),
-      leading: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          BackButtonCustom(
-            color: Theme.of(context).colorScheme.onBackground,
-            onTap: () => Navigator.pop(context),
-            size: const Size(32, 32),
-            borderRadius: 10,
-            icon: SvgIcon(
-              assetName: AppIcons.iconArrow,
-              color: theme.colorScheme.primary,
-              // height: 10,
-              // width: 10,
-            ),
-          ),
-        ],
-      ),
+      leading: (!widget.isBottomSheet)
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                BackButtonCustom(
+                  color: Theme.of(context).colorScheme.onBackground,
+                  onTap: () => Navigator.pop(context),
+                  size: const Size(32, 32),
+                  borderRadius: 10,
+                  icon: SvgIcon(
+                    assetName: AppIcons.iconArrow,
+                    color: theme.colorScheme.primary,
+                    // height: 10,
+                    // width: 10,
+                  ),
+                ),
+              ],
+            )
+          : null,
       bottom: PreferredSize(
           child: CustomTabIndicator(controller: _tabController),
           preferredSize: const Size.fromHeight(7.57)),
@@ -540,7 +546,9 @@ class AppBarNewSight extends StatelessWidget implements PreferredSizeWidget {
         style: Theme.of(context).textTheme.headline5,
       ),
       leading: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           child: Text(
             "Отмена",
             style: Theme.of(context).textTheme.bodyText2?.copyWith(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:places/const/paddings.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/appbar/tabbar/tabbar.dart';
 import 'package:places/widgets/pagesbodywidgets/empty_body.dart';
@@ -32,7 +33,7 @@ class VisitingScreen extends StatelessWidget {
           bottomBar: PreferredSize(
             preferredSize: const Size.fromHeight(40),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              padding: AppPadding.inputWidgetsInternPadding,
               child: TabBarVisitingWidget(tablist: _tabs),
             ),
           ),
@@ -100,7 +101,7 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
 
   Widget paintCard(List<Visits> vlist, bool isWant) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: AppPadding.inputWidgetsInternPadding,
       child: SingleChildScrollView(
         child: Column(
           children: _getListCards(vlist, isWant),
@@ -112,18 +113,10 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
   Widget paintCard2(List<Visits> vlist, bool isWant) {
     return ReorderableListView(
       buildDefaultDragHandles: false,
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: AppPadding.inputWidgetsInternPadding,
       children: _getListCards(vlist, isWant),
       onReorder: fnOnReorder(vlist),
     );
-    // return Padding(
-    //   padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-    //   child: SingleChildScrollView(
-    //     child: Column(
-    //       children: _getListCards(vlist, isWant),
-    //     ),
-    //   ),
-    // );
   }
 
   Function(int, int) fnOnReorder(List<Visits> vlist) {

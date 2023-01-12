@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:places/providers/addprovider.dart';
-import 'package:places/providers/buttonappbarprovider.dart';
 import 'package:places/providers/filterprovider.dart';
 import 'package:places/providers/themeprovide.dart';
-import 'package:places/ui/screen/add_sight_screen.dart';
-import 'package:places/ui/screen/onboarding_screen.dart';
-import 'package:places/ui/screen/settings_screen.dart' as screen5;
 import 'package:places/ui/screen/settings_screen.dart';
 import 'package:places/ui/screen/sigh_list_sliver2.dart';
-import 'package:places/ui/screen/sight_list_screen.dart' as screen;
-import 'package:places/ui/screen/sight_detailed.dart' as screen2;
-import 'package:places/ui/screen/sight_search_screen.dart';
 import 'package:places/ui/screen/spalsh_screen.dart';
-import 'package:places/ui/screen/tst.dart';
-import 'package:places/ui/screen/tst2.dart';
-import 'package:places/ui/screen/tst3.dart';
-import 'package:places/ui/screen/tstapp.dart';
-import 'package:places/ui/screen/visiting_screen.dart' as screen3;
-import 'package:places/ui/screen/filters_screen.dart' as screen4;
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'package:places/ui/res/themes.dart';
+
+import 'ui/screen/tstapp.dart';
 // import 'ui/screen/sight_list_screen.dart';
 
 void main() {
@@ -51,7 +39,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppThemes.darkTheme,
       themeMode: context.watch<ThemeProvider>().themeMode,
       routes: {
-        "/": (context) => const SplashScreen(),
+        "/": (context) => const TestPages(),
         "/list": (context) => const SightListScreenSliver2(),
         "/visiting": (context) => VisitingScreen(visitList: VisitList),
         "/settings": (context) => const SettingsPage(),

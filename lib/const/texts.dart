@@ -17,6 +17,10 @@ class CButtonTexts {
   static const placeRoute = "ПОСТРОИТЬ МАРШРУТ";
   static const schedule = "Запланировать";
   static const addFavorite = "В Избранное";
+  static const splashBCamera = "Камера";
+  static const splashBPhoto = "Фотография";
+  static const splashBFile = "Файл";
+  static const cancel = "отмена";
 
   CButtonTexts._();
 }
@@ -56,8 +60,29 @@ class CTextFileds {
 }
 
 class CLabelText {
-  static const wantVisit = "Хочу посутить";
+  static const wantVisit = "Хочу посетить";
   static const visit = "Посетил";
 
   CLabelText._();
+}
+
+class GetFText {
+  late final String txt;
+  GetFText(String txt) {
+    this.txt = txt.toLowerCase();
+  }
+
+  String get f => txt.toCapitalized();
+  String get t => txt.toTitleCase();
+  String get u => txt.toUpperCase();
+  String get l => txt.toLowerCase();
+}
+
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
 }

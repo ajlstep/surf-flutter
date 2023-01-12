@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/utils/sizes/vector4.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 
 class ButtonConstructor extends StatelessWidget {
@@ -52,7 +53,7 @@ class ButtonConstructor extends StatelessWidget {
       //       ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(
-            padding.left, padding.left, padding.left, padding.left),
+            padding.left, padding.top, padding.right, padding.bottom),
         child: Center(
           child: Row(
             mainAxisAlignment:
@@ -75,16 +76,6 @@ class ButtonConstructor extends StatelessWidget {
     }
     return _list;
   }
-}
-
-class Vector4 {
-  final double left;
-  final double top;
-  final double right;
-  final double bottom;
-  final double radius;
-
-  const Vector4(this.left, this.top, this.right, this.bottom, this.radius);
 }
 
 class SvgButton extends StatelessWidget {

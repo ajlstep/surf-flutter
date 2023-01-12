@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
+import 'package:places/const/paddings.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
@@ -87,7 +88,7 @@ class SightListBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: AppPadding.inputWidgetsInternPadding,
       child: Stack(
         children: [
           // SingleChildScrollView(
@@ -147,14 +148,5 @@ class SightListBody extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  List<Widget> _getListCards() {
-    List<Widget> list = [];
-    List<Sight> mocks = mocksPredef;
-    for (var item in mocks) {
-      list.add(SightCard(sight: item));
-    }
-    return list;
   }
 }

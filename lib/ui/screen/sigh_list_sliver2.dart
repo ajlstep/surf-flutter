@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
+import 'package:places/const/paddings.dart';
+import 'package:places/const/sizes.dart';
 import 'package:places/const/texts.dart';
-import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:places/ui/screen/sight_search_screen.dart';
 import 'package:places/utils/data_objects/app_bar_dimensions.dart';
@@ -141,7 +142,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
 
   Widget searchWidget() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: AppPadding.inputWidgetsInternPadding,
       child: TextFieldDesigned(
         onTap: () {
           Navigator.of(context).push(
@@ -157,21 +158,21 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
         controller: controller,
         maxLenght: 250,
         suffixWidget: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: AppPadding.searchWidgetIcon,
           child: SvgIcon(
             assetName: AppIcons.iconFilter,
             color: Theme.of(context).colorScheme.tertiary,
-            height: 24,
+            height: AppSizes.paddingDetailContentDivider,
             width: 24,
           ),
         ),
         prefixIcon: const Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: AppPadding.searchWidgetIcon,
           child: SvgIcon(
             assetName: AppIcons.iconSearch,
             color: Colors.black,
-            height: 24,
-            width: 24,
+            height: AppSizes.paddingDetailContentDivider,
+            width: AppSizes.paddingDetailContentDivider,
           ),
         ),
       ),
@@ -184,21 +185,11 @@ class SightListSliverBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
     return SliverList(
       delegate:
           SliverChildListDelegate(List.generate(mocksPredef.length, (index) {
         return SightCard(sight: mocksPredef[index]);
       })),
     );
-  }
-
-  List<Widget> _getListCards() {
-    List<Widget> list = [];
-    List<Sight> mocks = mocksPredef;
-    for (var item in mocks) {
-      list.add(SightCard(sight: item));
-    }
-    return list;
   }
 }
