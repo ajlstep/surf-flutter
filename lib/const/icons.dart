@@ -52,7 +52,7 @@ class AppIcons {
   static const String iconShare = '$_pathOther/share.svg';
   static const String iconGo = '$_pathOther/go.svg';
   static const String iconArrow = '$_pathOther/arrow.svg';
-  static const String iconFail = '$_pathOther/fail.svg';
+  static const String iconFile = '$_pathOther/fail.svg';
   static const String iconTick = '$_pathOther/tick.svg';
   static const String iconTickChoice = '$_pathOther/tick_choice.svg';
   static const String iconInfo = '$_pathOther/info.svg';
@@ -64,6 +64,8 @@ class AppIcons {
   static const String iconFilter = "$_pathOther/filter.svg";
   static const String iconBucket = "$_pathOther/bucket.svg";
   static const String iconSplash = "$_pathOther/subtract.svg";
+  static const String iconCamera = "$_pathOther/camera.svg";
+  static const String iconPhoto = "$_pathOther/photo.svg";
 
   // tutorial
   static const String tutorialAdd = "$_path/tutorial/add.svg";

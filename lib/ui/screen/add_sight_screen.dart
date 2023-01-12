@@ -6,6 +6,7 @@ import 'package:places/providers/addprovider.dart';
 import 'package:places/utils/formaters/add_formater.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 import 'package:places/widgets/button/buttons.dart';
+import 'package:places/widgets/dialogs/add_photo.dart';
 import 'package:places/widgets/divider/divider.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 import 'package:places/widgets/text/label_title.dart';
@@ -22,10 +23,6 @@ class AddSightScreen extends StatelessWidget {
       appBar: const AppBarNewSight(
         title: CTextFileds.newPlace,
       ),
-      // body: Provider(
-      //   create: (context) => AddSight(),
-      //   child: const _AddSightBody(),
-      // ),
       body: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => AddSight()),
@@ -99,13 +96,8 @@ class _AddSightBodyState extends State<_AddSightBody> {
                           contentPadding: AppPadding.padding0All,
                           title: Text(
                             CTextFileds.unselected,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText1
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondary),
+                            style: theme.textTheme.bodyText1
+                                ?.copyWith(color: theme.colorScheme.secondary),
                           ),
                           selected: true,
                           trailing: SvgButtonCustom(
@@ -292,10 +284,16 @@ class _AddSightBodyState extends State<_AddSightBody> {
     };
   }
 
-  void addPhoto(TapUpDetails det) {
+  void addPhoto() {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return const DialogAddPhoto();
+      },
+    );
     setState(() {
       for (var element in myList) {
-        if (lst.indexOf(element) == -1) {
+        if (!lst.contains(element)) {
           lst.add(element);
           break;
         }
@@ -304,6 +302,7 @@ class _AddSightBodyState extends State<_AddSightBody> {
   }
 
   List<Widget> getList() {
+    final theme = Theme.of(context);
     bool ifFirst = true;
     List<Widget> myLst = [];
     for (var el in lst) {
@@ -311,14 +310,27 @@ class _AddSightBodyState extends State<_AddSightBody> {
           ? myLst.add(
               Padding(
                 padding: const EdgeInsets.only(right: 16),
-                child: GestureDetector(
-                  onTapUp: addPhoto,
+                child: InkWell(
+                  onTap: addPhoto,
                   child: Container(
                     width: 72,
                     height: 72,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      // color: Colors.green,
                       borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        width: 2,
+                        color: theme.colorScheme.tertiary.withOpacity(0.48),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(19.84),
+                      child: SvgIcon(
+                        // height: 1.0,
+                        // width: 1.0,
+                        assetName: AppIcons.iconPlus,
+                        color: theme.colorScheme.tertiary,
+                      ),
                     ),
                   ),
                 ),

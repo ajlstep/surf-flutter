@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/gradients.dart';
+import 'package:places/const/sizes.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/sight_detailed.dart';
 import 'package:places/widgets/divider/divider.dart';
@@ -45,7 +46,7 @@ class MinSightCardv2 extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 11, 16, 11),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: AppSizes.borderCircular15,
                       child: SizedBox(
                         width: 56,
                         height: 56,
@@ -115,6 +116,7 @@ class MinSightCardv2 extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => DetailedPlace(
                           sight: sight,
+                          controller: ScrollController(),
                         )));
               },
             ),

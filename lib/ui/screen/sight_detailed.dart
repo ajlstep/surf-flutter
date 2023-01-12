@@ -1,10 +1,13 @@
+import 'package:places/const/icons.dart';
 import 'package:places/widgets/appbar/appbar.dart';
 
 import 'package:places/domain/sight.dart';
 import 'package:flutter/material.dart';
+import 'package:places/widgets/button/back_button.dart';
 import 'package:places/widgets/button/buttons.dart';
 import 'package:places/const/colors.dart';
 import 'package:places/const/texts.dart';
+import 'package:places/widgets/img/svg_icon.dart';
 
 // class DetailedPlace extends StatefulWidget {
 //   const DetailedPlace({Key? key}) : super(key: key);
@@ -14,34 +17,91 @@ import 'package:places/const/texts.dart';
 // }
 
 class DetailedPlace extends StatelessWidget {
-  const DetailedPlace({Key? key, required this.sight}) : super(key: key);
+  const DetailedPlace({Key? key, required this.sight, required this.controller})
+      : super(key: key);
   final Sight sight;
+  final ScrollController controller;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBarCustom(imgURL: sight.imgURL),
-      body: PreBodyWidget(sight: sight),
+      body: PreBodyWidget(sight: sight, controller: controller),
     );
   }
 }
 
 class PreBodyWidget extends StatelessWidget {
-  const PreBodyWidget({Key? key, required this.sight}) : super(key: key);
+  const PreBodyWidget({Key? key, required this.sight, required this.controller})
+      : super(key: key);
   final Sight sight;
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomScrollView(
-        slivers: [
-          CustomSliverAppBar(
-            imgURL: sight.imgURL,
+    var theme = Theme.of(context);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        CustomScrollView(
+          controller: controller,
+          slivers: [
+            CustomSliverAppBar(
+              imgURL: sight.imgURL,
+              isBottomSheet: true,
+            ),
+            SliverToBoxAdapter(
+              child: BodyWidget(sight),
+            ),
+          ],
+        ),
+        Positioned(
+          child: Container(
+            width: 60,
+            height: 4,
+            decoration: BoxDecoration(
+              color: theme.primaryColor,
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              boxShadow: [
+                BoxShadow(
+                  color: theme.dividerColor.withOpacity(0.35),
+                  spreadRadius: 3,
+                  blurRadius: 0,
+                  offset: const Offset(0, 0), // changes position of shadow
+                ),
+              ],
+            ),
           ),
-          SliverToBoxAdapter(
-            child: BodyWidget(sight),
+          top: 20,
+          left: MediaQuery.of(context).size.width / 2 - 60.0 / 2,
+        ),
+        Positioned(
+          top: 10.0,
+          right: 0.0,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16.0, top: 16.0),
+            child: CloseButtonCustom(
+              color: theme.primaryColor,
+              onTap: () => Navigator.pop(context),
+              size: const Size(40, 40),
+              borderRadius: 0,
+              icon: SvgIcon(
+                assetName: AppIcons.iconDelete,
+                color: theme.primaryColorDark,
+                height: 30,
+                width: 30,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: theme.dividerColor.withOpacity(0.35),
+                  spreadRadius: 3,
+                  blurRadius: 0,
+                  offset: const Offset(0, 0), // changes position of shadow
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

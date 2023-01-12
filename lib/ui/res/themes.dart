@@ -121,6 +121,9 @@ class AppThemes {
         ),
         rangeTrackShape: const RectangularRangeSliderTrackShape(),
       ),
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 
@@ -236,6 +239,9 @@ class AppThemes {
           elevation: 4,
         ),
         rangeTrackShape: const RectangularRangeSliderTrackShape(),
+      ),
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.transparent,
       ),
     );
   }

@@ -39,3 +39,47 @@ class BackButtonCustom extends StatelessWidget {
     );
   }
 }
+
+class CloseButtonCustom extends StatelessWidget {
+  final void Function() onTap;
+  final Size size;
+  final Color color;
+  final Widget? icon;
+  final double? borderRadius;
+  final String? text;
+  final List<BoxShadow>? boxShadow;
+  const CloseButtonCustom({
+    Key? key,
+    required this.onTap,
+    required this.size,
+    required this.color,
+    this.icon,
+    this.borderRadius,
+    this.text,
+    this.boxShadow,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: size.width,
+        height: size.height,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          boxShadow: boxShadow,
+          // borderRadius: borderRadius == null ? null : BorderRadius.circular(8),
+        ),
+        child: icon == null
+            ? Center(
+                child: Text(text ?? ""),
+              )
+            : Center(
+                child: icon,
+              ),
+      ),
+    );
+  }
+}

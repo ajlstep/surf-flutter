@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/utils/sizes/vector4.dart';
 
 /// Размеры для приложения
 class AppSizes {
@@ -22,6 +23,7 @@ class AppSizes {
   static const double paddingBtnNormalWithIcon = 12;
   static const double paddingBtnSmall = 11;
   static const double paddingSpaceBetweenIconAndText = 10;
+  static const double separatorWidth = 13;
 
   /// радиусы
   static const Radius radiusNormal = Radius.circular(12);
@@ -30,6 +32,9 @@ class AppSizes {
   static const Radius radiusBtnSwitch = Radius.circular(40);
   static const Radius radiusBtnTopNavigation = Radius.circular(10);
   static const Radius radiusBtnImageSlider = Radius.circular(8);
+
+  /// border radius
+  static BorderRadius borderCircular15 = BorderRadius.circular(15.0);
 
   /// размеры картинок
   static const double heightImageCard = 96;
@@ -42,5 +47,7 @@ class AppSizes {
   static const Size sizeIcon = Size.square(24);
   static const Size sizeIconEmptyPage = Size.square(64);
 
+  /// vector4
+  static const Vector4 buttonSplash = Vector4(16, 14, 16, 14, 0);
   AppSizes._();
 }

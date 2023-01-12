@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
+import 'package:places/const/paddings.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
@@ -98,7 +99,7 @@ class _SightListScreenSliverState extends State<SightListScreenSliver> {
 
   Widget searchWidget() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: AppPadding.inputWidgetsInternPadding,
       child: TextFieldDesigned(
         onTap: () {
           Navigator.of(context).push(
