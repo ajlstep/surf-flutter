@@ -96,8 +96,8 @@ List<Visits> VisitList = [
   Visits(mocksPredef[0], true, null),
   Visits(mocksPredef[1], true, null),
   Visits(mocksPredef[2], false, null),
-  Visits(mocksPredef[3], false, DateTime.parse("2012-05-27 09:00")),
-  Visits(mocksPredef[4], true, DateTime.parse("2012-06-27 10:00")),
+  Visits(mocksPredef[3], false, null),
+  Visits(mocksPredef[4], true, null),
 ];
 
 final List<Sight> mocksPredef = [

@@ -160,7 +160,7 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
     return list;
   }
 
-  Function deleteSightAction(Visits visit) {
+  Function() deleteSightAction(Visits visit) {
     return () {
       setState(() {
         visitWanted.remove(visit);
@@ -168,7 +168,7 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
     };
   }
 
-  Future Function() calendarSightAction(Visits visit) {
+  Function() calendarSightAction(Visits visit) {
     return () async {
       DateTime date = visit.date ?? DateTime.now();
       var ret = await showDatePicker(
