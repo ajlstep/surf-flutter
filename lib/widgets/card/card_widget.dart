@@ -302,20 +302,21 @@ class VisitSightCard extends SightCard {
       const SizedBox(
         height: 2,
       ),
-      Text(
-        "${CTextFileds.reached} ${DateFormat(AppSettings.dateFormatAbrMonth).format(
-          visits.date,
-        )}",
-        // CTextFileds.sheduled +
-        //     DateFormat(AppSettings.dateFormatAbrMonth).format(
-        //       visits.date,
-        //     ),
-        style: CTextStyles.small.copyWith(
-          color: CColors.green,
+      if (visits.date != null)
+        Text(
+          "${CTextFileds.reached} ${DateFormat(AppSettings.dateFormatAbrMonth).format(
+            visits.date!,
+          )}",
+          // CTextFileds.sheduled +
+          //     DateFormat(AppSettings.dateFormatAbrMonth).format(
+          //       visits.date,
+          //     ),
+          style: CTextStyles.small.copyWith(
+            color: CColors.green,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
       const SizedBox(
         height: 2,
       ),
@@ -391,16 +392,17 @@ class WantVisitSightCard extends SightCard {
       const SizedBox(
         height: 2,
       ),
-      Text(
-        "${CTextFileds.sheduled} ${DateFormat(AppSettings.dateFormatAbrMonth).format(
-          visits.date,
-        )}",
-        style: CTextStyles.small.copyWith(
-          color: CColors.green,
+      if (visits.date != null)
+        Text(
+          "${CTextFileds.sheduled} ${DateFormat(AppSettings.dateFormatAbrMonth).format(
+            visits.date!,
+          )}",
+          style: CTextStyles.small.copyWith(
+            color: CColors.green,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
       const SizedBox(
         height: 2,
       ),

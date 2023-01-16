@@ -139,6 +139,7 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
           Container(
             key: Key(item.sight.name),
             child: WantVisitSightCard(
+              onCalendar: calendarSightAction,
               visits: item,
               onDelete: deleteSightAction,
             ),
@@ -164,6 +165,23 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
       setState(() {
         visitWanted.remove(visit);
       });
+    };
+  }
+
+  Future Function() calendarSightAction(Visits visit) {
+    return () async {
+      DateTime date = visit.date ?? DateTime.now();
+      var ret = await showDatePicker(
+          context: context,
+          initialDate: date.isBefore(DateTime.now()) ? DateTime.now() : date,
+          firstDate: DateTime.now(),
+          lastDate: DateTime.now().add(const Duration(days: 365)));
+      if (ret != null) {
+        setState(() {
+          var vis = visitWanted.firstWhere((element) => element == visit);
+          vis.date = ret;
+        });
+      }
     };
   }
 

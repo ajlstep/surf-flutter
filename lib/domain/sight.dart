@@ -36,7 +36,7 @@ class Sight {
 class Visits {
   late Sight sight;
   late bool visit;
-  late DateTime date;
+  late DateTime? date;
 
   Visits(this.sight, this.visit, this.date);
 }

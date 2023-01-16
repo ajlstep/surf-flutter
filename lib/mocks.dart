@@ -93,9 +93,9 @@ import 'domain/sight.dart';
 
 // ignore: non_constant_identifier_names
 List<Visits> VisitList = [
-  Visits(mocksPredef[0], true, DateTime.parse("2012-02-27 15:24")),
-  Visits(mocksPredef[1], true, DateTime.parse("2012-03-27 09:00")),
-  Visits(mocksPredef[2], false, DateTime.parse("2012-04-27 11:00")),
+  Visits(mocksPredef[0], true, null),
+  Visits(mocksPredef[1], true, null),
+  Visits(mocksPredef[2], false, null),
   Visits(mocksPredef[3], false, DateTime.parse("2012-05-27 09:00")),
   Visits(mocksPredef[4], true, DateTime.parse("2012-06-27 10:00")),
 ];
