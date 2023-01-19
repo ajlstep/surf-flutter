@@ -8,7 +8,7 @@ class AppSettings {
   static const String pathImages = '$pathAssets/images';
 
   // формат даты
-  static const String dateFormatAbrMonth = 'd MMM y';
+  static const String dateFormatAbrMonth = 'd MMM y hh:mm';
 
   AppSettings._();
 }

@@ -170,17 +170,32 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
 
   Function() calendarSightAction(Visits visit) {
     return () async {
-      DateTime date = visit.date ?? DateTime.now();
-      var ret = await showDatePicker(
+      DateTime datenow = visit.date ?? DateTime.now();
+      TimeOfDay timenow = visit.date == null
+          ? TimeOfDay.now()
+          : TimeOfDay.fromDateTime(datenow);
+
+      var date = await showDatePicker(
           context: context,
-          initialDate: date.isBefore(DateTime.now()) ? DateTime.now() : date,
+          initialDate:
+              datenow.isBefore(DateTime.now()) ? DateTime.now() : datenow,
           firstDate: DateTime.now(),
           lastDate: DateTime.now().add(const Duration(days: 365)));
-      if (ret != null) {
-        setState(() {
-          var vis = visitWanted.firstWhere((element) => element == visit);
-          vis.date = ret;
-        });
+      if (date != null) {
+        var time = await showTimePicker(context: context, initialTime: timenow);
+        if (time != null) {
+          date = DateTime(
+            date.year,
+            date.month,
+            date.day,
+            time.hour,
+            time.minute,
+          );
+          setState(() {
+            var vis = visitWanted.firstWhere((element) => element == visit);
+            vis.date = date;
+          });
+        }
       }
     };
   }

@@ -8,22 +8,23 @@ class TabBarVisitingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(
         vertical: 6,
       ),
       height: 40,
       decoration: BoxDecoration(
-        color: CColors.backGround,
+        color: theme.backgroundColor,
         borderRadius: BorderRadius.circular(40),
       ),
       child: TabBar(
-        labelStyle: Theme.of(context).textTheme.subtitle1,
+        labelStyle: theme.textTheme.subtitle1,
         // labelColor: CColors.white,
-        unselectedLabelColor: CColors.textColor,
+        unselectedLabelColor: theme.primaryColorDark,
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(40),
-          color: CColors.textColor,
+          color: theme.primaryColorDark,
         ),
         tabs: tablist,
       ),
