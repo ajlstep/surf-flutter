@@ -29,43 +29,37 @@ class SightCard extends StatelessWidget {
       padding: AppPadding.addSightExtern,
       child: Stack(
         children: [
-          AspectRatio(
-            aspectRatio: 3 / 2,
-            child: DecoratedBox(
-              child: ClipRRect(
-                borderRadius: AppSizes.borderCircular15,
-                child: Padding(
-                  padding: AppPadding.inputWidgetsInternPadding,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 8),
-                            child: SvgIcon(
-                              assetName: AppIcons.iconBucket,
-                            ),
+          DecoratedBox(
+            child: ClipRRect(
+              borderRadius: AppSizes.borderCircular15,
+              child: Padding(
+                padding: AppPadding.inputWidgetsInternPadding,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 8),
+                          child: SvgIcon(
+                            assetName: AppIcons.iconBucket,
                           ),
-                          Text(
-                            CTextFileds.delete,
-                            style: Theme.of(context)
-                                .textTheme
-                                .caption
-                                ?.copyWith(
-                                    color: Theme.of(context).primaryColorLight),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        Text(
+                          CTextFileds.delete,
+                          style: Theme.of(context).textTheme.caption?.copyWith(
+                              color: Theme.of(context).primaryColorLight),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.error,
-                borderRadius: const BorderRadius.all(Radius.circular(15)),
-              ),
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.error,
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
           ),
           Dismissible(
@@ -75,80 +69,74 @@ class SightCard extends StatelessWidget {
                 : DismissDirection.none,
             child: Stack(
               children: [
-                AspectRatio(
-                  aspectRatio: 3 / 2,
-                  child: DecoratedBox(
-                    child: ClipRRect(
-                      borderRadius: AppSizes.borderCircular15,
-                      child: AppImageConstructor(
-                              fit: BoxFit.cover,
-                              imgURL: sight.imgURL[0],
-                              opacity: 0.4,
-                              gradient: CGradients.whiteImageGradient)
-                          .image(),
-                    ),
-                    decoration: const BoxDecoration(
-                      color: CColors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
+                DecoratedBox(
+                  child: ClipRRect(
+                    borderRadius: AppSizes.borderCircular15,
+                    child: AppImageConstructor(
+                            fit: BoxFit.cover,
+                            imgURL: sight.imgURL[0],
+                            opacity: 0.4,
+                            gradient: CGradients.whiteImageGradient)
+                        .image(),
+                  ),
+                  decoration: const BoxDecoration(
+                    // color: CColors.white,
+                    color: Colors.red,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                 ),
-                AspectRatio(
-                  aspectRatio: 3 / 2,
-                  child: DecoratedBox(
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                DecoratedBox(
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            getTypeWiget(context),
+                            // Padding(
+                            //   padding: const EdgeInsets.fromLTRB(
+                            //       0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
+                            //   child: Row(
+                            //     children: getListImagedButton(),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                      DecoratedBox(
+                        decoration: const BoxDecoration(
+                          color: CColors.backGround,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              getTypeWiget(context),
-                              // Padding(
-                              //   padding: const EdgeInsets.fromLTRB(
-                              //       0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
-                              //   child: Row(
-                              //     children: getListImagedButton(),
-                              //   ),
+                              // const SizedBox(
+                              //   height: 96,
                               // ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: getColumnListText(),
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                        DecoratedBox(
-                          decoration: const BoxDecoration(
-                            color: CColors.backGround,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Row(
-                              children: [
-                                // const SizedBox(
-                                //   height: 96,
-                                // ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: getColumnListText(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Positioned.fill(
@@ -251,6 +239,13 @@ class SightCard extends StatelessWidget {
   }
 
   void onDel(DismissDirection dir) {}
+
+  double getRatio(BuildContext context) {
+    return 2 / 2;
+    // return MediaQuery.of(context).orientation == Orientation.portrait
+    //     ? 3 / 2
+    //     : 2 / 2;
+  }
 }
 
 class VisitSightCard extends SightCard {

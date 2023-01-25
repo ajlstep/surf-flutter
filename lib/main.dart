@@ -14,6 +14,7 @@ import 'ui/screen/tstapp.dart';
 // import 'ui/screen/sight_list_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [

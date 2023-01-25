@@ -7,6 +7,7 @@ class AppBarAnimateData {
   final double minValue2;
   final double maxValue2;
   final double width;
+  final bool isDesktop;
   double _mutableValue = 0;
   double _obst = 0;
 
@@ -15,7 +16,7 @@ class AppBarAnimateData {
   }
 
   set obst(double obst) {
-    _obst = obst;
+    _obst = obst - (isDesktop ? 20 : 0);
   }
 
   double get value => getValue();
@@ -23,7 +24,7 @@ class AppBarAnimateData {
   FractionalOffset get position => getPosition();
   String get txt => getTxt();
   bool get ob => !(_mutableValue > 25);
-  double get border => ob ? 0 : 1 * 15;
+  double get border => !(ob && !isDesktop) ? 0 : 1 * 15;
 
   AppBarAnimateData({
     required this.setState,
@@ -32,6 +33,7 @@ class AppBarAnimateData {
     required this.width,
     required this.maxValue2,
     required this.minValue2,
+    required this.isDesktop,
   });
 
   double getValue() {

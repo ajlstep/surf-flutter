@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
 import 'package:places/const/paddings.dart';
@@ -68,6 +70,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
       maxValue2: 64,
       minValue2: 20,
       width: width,
+      isDesktop: Platform.isLinux || Platform.isWindows || Platform.isMacOS,
     )..obst = width / 1.6;
     _contr.addListener(() {
       animData.mutval = _contr.offset;
@@ -185,11 +188,39 @@ class SightListSliverBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
+    // return SliverList(
+    //   delegate:
+    //       SliverChildListDelegate(List.generate(mocksPredef.length, (index) {
+    //     return SightCard(sight: mocksPredef[index]);
+    //   })),
+    // );
+
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: getNymCol(context),
+          childAspectRatio: 3 / 2,
+          mainAxisSpacing: 0,
+          crossAxisSpacing: 0),
+      // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+      //   maxCrossAxisExtent: 550.0,
+      //   mainAxisSpacing: 0.0,
+      //   crossAxisSpacing: 0.0,
+      //   childAspectRatio: 1.4,
+      // ),
       delegate:
           SliverChildListDelegate(List.generate(mocksPredef.length, (index) {
         return SightCard(sight: mocksPredef[index]);
       })),
     );
   }
+}
+
+int getNymCol(BuildContext context) {
+  // if (MediaQuery.of(context).size.height / MediaQuery.of(context).size.width >
+  //     1.7) {
+  //   return 1;
+  // } else {
+  //   return 2;
+  // }
+  return MediaQuery.of(context).orientation == Orientation.portrait ? 1 : 2;
 }

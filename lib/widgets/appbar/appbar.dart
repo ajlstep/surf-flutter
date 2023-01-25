@@ -494,7 +494,7 @@ class _SliverAppBarFindSightState extends State<SliverAppBarFindSight> {
       //     : null,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.red,
+        // systemNavigationBarColor: Colors.red,
       ),
       centerTitle: true,
       backgroundColor: theme.primaryColor,
@@ -534,7 +534,7 @@ class AppBarNewSight extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.red,
+        // systemNavigationBarColor: Colors.red,
       ),
       backgroundColor: Theme.of(context).primaryColor,
       elevation: 0,

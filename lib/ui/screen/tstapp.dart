@@ -1,3 +1,5 @@
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 import 'package:places/ui/screen/onboarding_screen.dart';
@@ -12,6 +14,10 @@ import 'package:places/ui/screen/tst3.dart';
 import 'package:places/ui/screen/tst4.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 import 'package:places/mocks.dart';
+// import 'package:places/utils/auth_reg/google_auth/google.dart';
+// import 'package:places/utils/auth_reg/google_auth/google2.dart';
+// import 'package:places/utils/auth_reg/google_auth/google3.dart';
+// import 'package:places/utils/auth_reg/google_auth/google4.dart';
 
 class TestPages extends StatelessWidget {
   const TestPages({Key? key}) : super(key: key);
@@ -59,4 +65,46 @@ var list = {
   "onboarding": OnboardingScreen(),
   "test page4": const TestPage5(),
   "spash screen": const SplashScreen(),
+  // "auth page": const AuthPage(),
 };
+
+// class AuthPage extends StatefulWidget {
+//   const AuthPage({Key? key}) : super(key: key);
+
+//   @override
+//   State<AuthPage> createState() => _AuthPageState();
+// }
+
+// class _AuthPageState extends State<AuthPage> {
+//   // late FirebaseApp firebaseApp;
+//   late FirebaseAuth fireAuth;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     asInit();
+//   }
+
+//   Future<void> asInit() async {
+//     // firebaseApp = await Firebase.initializeApp();
+//     // fireAuth = FirebaseAuth.instance;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: Column(
+//           children: [
+//             TextButton(
+//               onPressed: () async {
+//                 await signInWithGoogle2();
+//               },
+//               child: const Text("auth"),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

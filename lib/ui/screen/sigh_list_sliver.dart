@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:places/const/icons.dart';
 import 'package:places/const/paddings.dart';
@@ -30,15 +32,16 @@ class _SightListScreenSliverState extends State<SightListScreenSliver> {
   @override
   void initState() {
     animData = AppBarAnimateData(
-        setState: () {
-          setState(() {});
-        },
-        maxValue: 32,
-        minValue: 18,
-        maxValue2: 64,
-        minValue2: 1,
-        width: width)
-      ..obst = width / 1.6;
+      setState: () {
+        setState(() {});
+      },
+      maxValue: 32,
+      minValue: 18,
+      maxValue2: 64,
+      minValue2: 1,
+      width: width,
+      isDesktop: Platform.isLinux || Platform.isWindows || Platform.isMacOS,
+    )..obst = width / 1.6;
     _contr.addListener(() {
       animData.mutval = _contr.offset;
       setState(() {});
