@@ -26,6 +26,7 @@ class FiltersScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     // var s = Provider.of<Filters>(context, listen: false);
     // return _gridViewDemo();
     return Padding(
@@ -55,7 +56,8 @@ class FiltersScreenBody extends StatelessWidget {
                     footer: Center(
                       child: Text(
                         value.mocks[index].name,
-                        style: Theme.of(context).textTheme.caption,
+                        style: theme.textTheme.caption
+                            ?.copyWith(color: theme.colorScheme.onSecondary),
                       ),
                     ),
                     child: Center(
@@ -85,15 +87,13 @@ class FiltersScreenBody extends StatelessWidget {
           ),
           const Spacer(),
           ButtonConstructor(
-            backgroundColor: Theme.of(context).colorScheme.tertiary,
+            backgroundColor: theme.colorScheme.tertiary,
             onPressed: () {},
             text: Consumer<Filters>(
               builder: (context, value, child) => Text(
                 "${CTextFileds.view} (${value.count.toString()})",
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    ?.copyWith(color: Theme.of(context).primaryColor),
+                style: theme.textTheme.subtitle1
+                    ?.copyWith(color: theme.primaryColor),
               ),
             ),
           ),

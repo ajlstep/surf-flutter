@@ -6,8 +6,10 @@ import 'package:places/const/paddings.dart';
 import 'package:places/const/sizes.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
+import 'package:places/ui/screen/filters_screen.dart';
 import 'package:places/ui/screen/sight_search_screen.dart';
 import 'package:places/utils/data_objects/app_bar_dimensions.dart';
+import 'package:places/utils/sizes/vector4.dart';
 import 'package:places/widgets/bottom/bottom.dart';
 import 'package:places/widgets/button/buttons.dart';
 import 'package:places/widgets/card/card_widget.dart';
@@ -147,6 +149,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
       padding: AppPadding.inputWidgetsInternPadding,
       child: TextFieldDesigned(
         onTap: () {
+          print("object");
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => const SightSearchScreen(),
@@ -159,15 +162,14 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
         filledColor: theme.backgroundColor,
         controller: controller,
         maxLenght: 250,
-        suffixWidget: Padding(
-          padding: AppPadding.searchWidgetIcon,
-          child: SvgIcon(
-            assetName: AppIcons.iconFilter,
-            color: theme.colorScheme.tertiary,
-            height: AppSizes.paddingDetailContentDivider,
-            width: 24,
-          ),
-        ),
+        suffixWidget: SvgButtonCustom2(
+            icon: AppIcons.iconFilter,
+            iconColor: theme.colorScheme.tertiary,
+            interiorPadding: const Vector4(8, 8, 8, 8, 0),
+            splashColor:
+                Theme.of(context).colorScheme.background.withOpacity(1),
+            onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const FiltersScreen()))),
         prefixIcon: Padding(
           padding: AppPadding.searchWidgetIcon,
           child: SvgIcon(

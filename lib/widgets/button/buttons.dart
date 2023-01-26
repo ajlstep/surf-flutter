@@ -27,38 +27,42 @@ class ButtonConstructor extends StatelessWidget {
   Widget build(BuildContext context) {
     //padding ??= Vector4(0, 0, 0, 0);
 
-    return TextButton(
-      onPressed: onPressed,
-      style: backgroundColor == null
-          ? null
-          : Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(backgroundColor!),
-                shape: shappe == null
-                    ? null
-                    : MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(shappe!))),
-              ),
-      // style: backgroundColor == null
-      //     ? null
-      //     : ButtonStyle(
-      //         backgroundColor:
-      //             MaterialStateProperty.all<Color>(backgroundColor!),
-      //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      //           RoundedRectangleBorder(
-      //             borderRadius: BorderRadius.circular(padding.radius),
-      //           ),
-      //         ),
-      //       ),
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(
-            padding.left, padding.top, padding.right, padding.bottom),
-        child: Center(
-          child: Row(
-            mainAxisAlignment:
-                maAAlignment == null ? MainAxisAlignment.center : maAAlignment!,
-            children: getWidgets(),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 48),
+      child: TextButton(
+        onPressed: onPressed,
+        style: backgroundColor == null
+            ? null
+            : Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(backgroundColor!),
+                  shape: shappe == null
+                      ? null
+                      : MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(shappe!))),
+                ),
+        // style: backgroundColor == null
+        //     ? null
+        //     : ButtonStyle(
+        //         backgroundColor:
+        //             MaterialStateProperty.all<Color>(backgroundColor!),
+        //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        //           RoundedRectangleBorder(
+        //             borderRadius: BorderRadius.circular(padding.radius),
+        //           ),
+        //         ),
+        //       ),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(
+              padding.left, padding.top, padding.right, padding.bottom),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: maAAlignment == null
+                  ? MainAxisAlignment.center
+                  : maAAlignment!,
+              children: getWidgets(),
+            ),
           ),
         ),
       ),
@@ -89,6 +93,8 @@ class SvgButton extends StatelessWidget {
     this.right,
     this.iconColor,
     this.splashColor,
+    this.width,
+    this.height,
   }) : super(key: key);
   final String icon;
   final void Function()? onPressed;
@@ -98,6 +104,8 @@ class SvgButton extends StatelessWidget {
   final double? right;
   final double? top;
   final double? bottom;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -118,8 +126,8 @@ class SvgButton extends StatelessWidget {
                 child: SvgIcon(
                   assetName: icon,
                   color: iconColor,
-                  // width: 20,
-                  // height: 20,
+                  width: width,
+                  height: height,
                 ),
               ),
             ),
@@ -166,6 +174,59 @@ class SvgButtonCustom extends StatelessWidget {
             onTap: onPressed,
             child: Padding(
               padding: EdgeInsets.all(iconPadding ?? 0),
+              child: SvgIcon(
+                assetName: icon,
+                color: iconColor,
+                // width: 20,
+                // height: 20,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SvgButtonCustom2 extends StatelessWidget {
+  const SvgButtonCustom2({
+    Key? key,
+    required this.icon,
+    required this.onPressed,
+    this.exteriorPadding,
+    this.interiorPadding,
+    this.iconColor,
+    this.splashColor,
+    this.iconPadding,
+  }) : super(key: key);
+  final String icon;
+  final Function() onPressed;
+  final Color? splashColor;
+  final Color? iconColor;
+  final Vector4? exteriorPadding;
+  final Vector4? interiorPadding;
+  final double? iconPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(
+          exteriorPadding?.left ?? 0,
+          exteriorPadding?.top ?? 0,
+          exteriorPadding?.right ?? 0,
+          exteriorPadding?.bottom ?? 0),
+      child: ClipOval(
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            splashColor: splashColor,
+            onTap: onPressed,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  interiorPadding?.left ?? 0,
+                  interiorPadding?.top ?? 0,
+                  interiorPadding?.right ?? 0,
+                  interiorPadding?.bottom ?? 0),
               child: SvgIcon(
                 assetName: icon,
                 color: iconColor,

@@ -289,7 +289,7 @@ class AppBarVisitingFilter extends StatelessWidget
           Icons.arrow_back_ios,
           color: Theme.of(context).primaryColorDark,
         ),
-        onPressed: () {}, // () => Navigator.of(context).pop(),
+        onPressed: () => Navigator.of(context).pop(),
       ),
       actions: [
         TextButton(
@@ -482,7 +482,7 @@ class _SliverAppBarFindSightState extends State<SliverAppBarFindSight> {
       pinned: true,
       expandedHeight: widget.animData.width,
       // elevation: 15,
-      toolbarHeight: 25,
+      toolbarHeight: 45,
       // titleSpacing: 0,
 
       // bottom: widget.widg != null
