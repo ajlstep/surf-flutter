@@ -16,6 +16,7 @@ class TabBarVisitingWidget extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
         color: theme.backgroundColor,
+        // color: Colors.yellow,
         borderRadius: BorderRadius.circular(40),
       ),
       child: TabBar(
@@ -27,6 +28,7 @@ class TabBarVisitingWidget extends StatelessWidget {
           color: theme.primaryColorDark,
         ),
         tabs: tablist,
+        splashBorderRadius: BorderRadius.circular(40),
       ),
     );
   }

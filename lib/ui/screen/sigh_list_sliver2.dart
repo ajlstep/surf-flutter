@@ -125,14 +125,12 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
           },
           text: Text(
             CTextFileds.newPlace,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(color: Theme.of(context).primaryColor),
+            style: theme.textTheme.subtitle1
+                ?.copyWith(color: theme.colorScheme.onPrimary),
           ),
           icon: SvgIcon(
             assetName: AppIcons.iconPlus,
-            color: theme.primaryColorLight,
+            color: theme.colorScheme.onPrimary,
           ),
           separatorWidth: 8,
           shappe: 24,
@@ -144,6 +142,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
   }
 
   Widget searchWidget() {
+    var theme = Theme.of(context);
     return Padding(
       padding: AppPadding.inputWidgetsInternPadding,
       child: TextFieldDesigned(
@@ -157,23 +156,23 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
         hintText: "Пойск",
         filled: true,
         predBorderDecoration: false,
-        filledColor: Theme.of(context).primaryColorLight,
+        filledColor: theme.backgroundColor,
         controller: controller,
         maxLenght: 250,
         suffixWidget: Padding(
           padding: AppPadding.searchWidgetIcon,
           child: SvgIcon(
             assetName: AppIcons.iconFilter,
-            color: Theme.of(context).colorScheme.tertiary,
+            color: theme.colorScheme.tertiary,
             height: AppSizes.paddingDetailContentDivider,
             width: 24,
           ),
         ),
-        prefixIcon: const Padding(
+        prefixIcon: Padding(
           padding: AppPadding.searchWidgetIcon,
           child: SvgIcon(
             assetName: AppIcons.iconSearch,
-            color: Colors.black,
+            color: theme.disabledColor,
             height: AppSizes.paddingDetailContentDivider,
             width: AppSizes.paddingDetailContentDivider,
           ),

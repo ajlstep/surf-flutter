@@ -69,6 +69,7 @@ class _TextFieldDesignedState extends State<TextFieldDesigned> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return SizedBox(
       height: widget.multiLine ? null : 40,
       child: TextField(
@@ -88,6 +89,8 @@ class _TextFieldDesignedState extends State<TextFieldDesigned> {
         maxLines: widget.multiLine ? null : 1,
         decoration: InputDecoration(
           hintText: widget.hintText,
+          hintStyle:
+              theme.textTheme.bodyText1?.copyWith(color: theme.disabledColor),
           counterText: "",
           suffixIcon: widget.controller?.text != ""
               ? Row(
@@ -128,24 +131,19 @@ class _TextFieldDesignedState extends State<TextFieldDesigned> {
               color: Theme.of(context)
                   .colorScheme
                   .tertiaryContainer
-                  .withOpacity(0.4),
+                  .withOpacity(0.0),
               width: widget.predBorderDecoration == null ? 1 : 0,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(AppSizes.radiusBtnImageSlider),
             borderSide: BorderSide(
-              color: Theme.of(context)
-                  .colorScheme
-                  .tertiaryContainer
-                  .withOpacity(0.4),
+              color: theme.colorScheme.tertiaryContainer.withOpacity(0.4),
               width: widget.predBorderDecoration == null ? 2 : 0,
             ),
           ),
         ),
-        style: Theme.of(context)
-            .textTheme
-            .bodyText1
+        style: theme.textTheme.bodyText1
             ?.copyWith(color: Theme.of(context).colorScheme.primary),
       ),
     );

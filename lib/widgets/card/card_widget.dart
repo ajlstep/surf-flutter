@@ -25,6 +25,7 @@ class SightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Padding(
       padding: AppPadding.addSightExtern,
       child: Stack(
@@ -72,17 +73,19 @@ class SightCard extends StatelessWidget {
                 DecoratedBox(
                   child: ClipRRect(
                     borderRadius: AppSizes.borderCircular15,
-                    child: AppImageConstructor(
-                            fit: BoxFit.cover,
-                            imgURL: sight.imgURL[0],
-                            opacity: 0.4,
-                            gradient: CGradients.whiteImageGradient)
-                        .image(),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 1.0),
+                      child: AppImageConstructor(
+                              fit: BoxFit.cover,
+                              imgURL: sight.imgURL[0],
+                              opacity: 0.4,
+                              gradient: CGradients.whiteImageGradient)
+                          .image(),
+                    ),
                   ),
-                  decoration: const BoxDecoration(
-                    // color: CColors.white,
-                    color: Colors.red,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  decoration: BoxDecoration(
+                    color: theme.primaryColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
                   ),
                 ),
                 DecoratedBox(
@@ -100,26 +103,20 @@ class SightCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             getTypeWiget(context),
-                            // Padding(
-                            //   padding: const EdgeInsets.fromLTRB(
-                            //       0, 28 - 9.5 - 16, 28 - 9.5 - 16, 0),
-                            //   child: Row(
-                            //     children: getListImagedButton(),
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
                       DecoratedBox(
-                        decoration: const BoxDecoration(
-                          color: CColors.backGround,
-                          borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                          color: theme.cardColor,
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(12),
                             bottomRight: Radius.circular(12),
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.only(
+                              top: 16.0, left: 16.0, right: 16.0, bottom: 16.0),
                           child: Row(
                             children: [
                               // const SizedBox(
@@ -129,7 +126,7 @@ class SightCard extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: getColumnListText(),
+                                  children: getColumnListText(context),
                                 ),
                               ),
                             ],
@@ -196,7 +193,7 @@ class SightCard extends StatelessWidget {
     return Text(
       sight.type.name.toString(),
       style: CTextStyles.smallBold.copyWith(
-        color: Theme.of(context).backgroundColor,
+        color: Theme.of(context).colorScheme.onPrimary,
       ),
     );
   }
@@ -207,7 +204,7 @@ class SightCard extends StatelessWidget {
         icon: AppIcons.menuHeart,
         onPressed: () {},
         // iconColor: Colors.red,
-        iconColor: Theme.of(context).primaryColor,
+        iconColor: Theme.of(context).colorScheme.onPrimary,
         splashColor: Theme.of(context).colorScheme.background.withOpacity(1),
         // splashColor: Colors.red,
         top: 10,
@@ -216,13 +213,14 @@ class SightCard extends StatelessWidget {
     ];
   }
 
-  List<Widget> getColumnListText() {
+  List<Widget> getColumnListText(BuildContext context) {
+    var theme = Theme.of(context);
     return [
       Text(
         sight.name,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: CTextStyles.text.copyWith(),
+        style: CTextStyles.text.copyWith(color: theme.colorScheme.onSecondary),
       ),
       const SizedBox(
         height: 2,
@@ -230,7 +228,8 @@ class SightCard extends StatelessWidget {
       Text(
         sight.details,
         style: CTextStyles.small.copyWith(
-          color: CColors.smallText,
+          color: theme.colorScheme.secondaryContainer,
+          // color: Colors.yellow,
         ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
@@ -286,13 +285,14 @@ class VisitSightCard extends SightCard {
   }
 
   @override
-  List<Widget> getColumnListText() {
+  List<Widget> getColumnListText(BuildContext context) {
+    var theme = Theme.of(context);
     return [
       Text(
         sight.name,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: CTextStyles.text.copyWith(),
+        style: CTextStyles.text.copyWith(color: theme.colorScheme.onSecondary),
       ),
       const SizedBox(
         height: 2,
@@ -307,7 +307,7 @@ class VisitSightCard extends SightCard {
           //       visits.date,
           //     ),
           style: CTextStyles.small.copyWith(
-            color: CColors.green,
+            color: theme.colorScheme.tertiary,
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -318,7 +318,8 @@ class VisitSightCard extends SightCard {
       Text(
         CTextFileds.closed,
         style: CTextStyles.small.copyWith(
-          color: CColors.whiteSecondary2,
+          // color: CColors.whiteSecondary2,
+          color: theme.colorScheme.secondaryContainer,
         ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
@@ -376,13 +377,14 @@ class WantVisitSightCard extends SightCard {
   }
 
   @override
-  List<Widget> getColumnListText() {
+  List<Widget> getColumnListText(BuildContext context) {
+    var theme = Theme.of(context);
     return [
       Text(
         sight.name,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: CTextStyles.text.copyWith(),
+        style: CTextStyles.text.copyWith(color: theme.colorScheme.onSecondary),
       ),
       const SizedBox(
         height: 2,
@@ -393,7 +395,7 @@ class WantVisitSightCard extends SightCard {
             visits.date!,
           )}",
           style: CTextStyles.small.copyWith(
-            color: CColors.green,
+            color: theme.colorScheme.tertiary,
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -404,7 +406,8 @@ class WantVisitSightCard extends SightCard {
       Text(
         CTextFileds.closed,
         style: CTextStyles.small.copyWith(
-          color: CColors.whiteSecondary2,
+          // color: CColors.whiteSecondary2,
+          color: theme.colorScheme.secondaryContainer,
         ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,

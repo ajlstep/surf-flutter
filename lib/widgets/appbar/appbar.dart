@@ -244,14 +244,15 @@ class AppBarVisiting extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return AppBar(
       automaticallyImplyLeading: false,
-      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.red,
-      ),
+      // systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+      //   statusBarColor: Colors.transparent,
+      //   systemNavigationBarColor: Colors.red,
+      // ),
       title: title,
-      backgroundColor: CColors.white,
+      backgroundColor: theme.primaryColor,
       elevation: 0,
       toolbarHeight: 56,
       titleSpacing: 16,

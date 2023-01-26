@@ -87,14 +87,14 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
                 titleText: CTextFileds.empty,
                 text: CTextFileds.emptywantVisit,
               )
-            : paintCard2(visitWanted, true),
+            : paintCard3(visitWanted, true),
         visits.isEmpty
             ? const EmptyBody(
                 icon: AppIcons.emptyPageGo,
                 titleText: CTextFileds.empty,
                 text: CTextFileds.emptyVisit,
               )
-            : paintCard2(visits, false),
+            : paintCard3(visits, false),
       ],
     );
   }
@@ -117,6 +117,24 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
       children: _getListCards(vlist, isWant),
       onReorder: fnOnReorder(vlist),
     );
+  }
+
+  Widget paintCard3(List<Visits> vlist, bool isWant) {
+    return GridView(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: getNymCol(context),
+          childAspectRatio: 3 / 2,
+          mainAxisSpacing: 0,
+          crossAxisSpacing: 0),
+      // buildDefaultDragHandles: false,
+      padding: AppPadding.inputWidgetsInternPadding,
+      children: _getListCards(vlist, isWant),
+      // onReorder: fnOnReorder(vlist),
+    );
+  }
+
+  int getNymCol(BuildContext context) {
+    return MediaQuery.of(context).orientation == Orientation.portrait ? 1 : 2;
   }
 
   Function(int, int) fnOnReorder(List<Visits> vlist) {
