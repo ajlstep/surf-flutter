@@ -73,6 +73,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
       minValue2: 20,
       width: width,
       isDesktop: Platform.isLinux || Platform.isWindows || Platform.isMacOS,
+      context: context,
     )..obst = width / 1.6;
     _contr.addListener(() {
       animData.mutval = _contr.offset;
@@ -90,6 +91,7 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
 
   @override
   Widget build(BuildContext context) {
+    var mq = MediaQuery.of(context).orientation;
     var theme = Theme.of(context);
     return Scaffold(
       body: CustomScrollView(
@@ -146,10 +148,11 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
   Widget searchWidget() {
     var theme = Theme.of(context);
     return Padding(
-      padding: AppPadding.inputWidgetsInternPadding,
+      padding: animData.isPortrait
+          ? AppPadding.inputWidgetsInternPadding
+          : AppPadding.inputWidgetsInternPaddingLandscape,
       child: TextFieldDesigned(
         onTap: () {
-          print("object");
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => const SightSearchScreen(),
@@ -195,13 +198,15 @@ class SightListSliverBody extends StatelessWidget {
     //     return SightCard(sight: mocksPredef[index]);
     //   })),
     // );
-
+    var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: getNymCol(context),
-          childAspectRatio: 3 / 2,
-          mainAxisSpacing: 0,
-          crossAxisSpacing: 0),
+        crossAxisCount: getNymCol(context),
+        childAspectRatio: 3 / 2,
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 36,
+        // mainAxisExtent: 0,
+      ),
       // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
       //   maxCrossAxisExtent: 550.0,
       //   mainAxisSpacing: 0.0,
@@ -210,9 +215,21 @@ class SightListSliverBody extends StatelessWidget {
       // ),
       delegate:
           SliverChildListDelegate(List.generate(mocksPredef.length, (index) {
-        return SightCard(sight: mocksPredef[index]);
+        return Padding(
+          padding: EdgeInsets.fromLTRB(getLeftPadding(index, isPortrait), 0,
+              getRightPadding(index, isPortrait), 0),
+          child: SightCard(sight: mocksPredef[index]),
+        );
       })),
     );
+  }
+
+  double getRightPadding(int index, bool isPortrait) {
+    return index % 2 == 0 || isPortrait ? 0.0 : 34.0;
+  }
+
+  double getLeftPadding(int index, bool isPortrait) {
+    return index % 2 == 1 || isPortrait ? 0.0 : 34.0;
   }
 }
 

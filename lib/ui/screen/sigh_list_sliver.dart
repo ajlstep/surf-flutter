@@ -41,6 +41,7 @@ class _SightListScreenSliverState extends State<SightListScreenSliver> {
       minValue2: 1,
       width: width,
       isDesktop: Platform.isLinux || Platform.isWindows || Platform.isMacOS,
+      context: context,
     )..obst = width / 1.6;
     _contr.addListener(() {
       animData.mutval = _contr.offset;
@@ -102,7 +103,9 @@ class _SightListScreenSliverState extends State<SightListScreenSliver> {
 
   Widget searchWidget() {
     return Padding(
-      padding: AppPadding.inputWidgetsInternPadding,
+      padding: animData.isPortrait
+          ? AppPadding.inputWidgetsInternPadding
+          : AppPadding.inputWidgetsInternPaddingLandscape,
       child: TextFieldDesigned(
         onTap: () {
           Navigator.of(context).push(

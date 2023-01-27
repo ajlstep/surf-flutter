@@ -16,5 +16,7 @@ class AppPadding {
       EdgeInsets.only(right: 16.0, left: 16.0, bottom: 8.0);
   static const searchWidgetIcon = EdgeInsets.all(10.0);
   static const inputWidgetsInternPadding = EdgeInsets.fromLTRB(16, 0, 16, 0);
+  static const inputWidgetsInternPaddingLandscape =
+      EdgeInsets.fromLTRB(38, 0, 38, 0);
   static const addSightExtern = EdgeInsets.all(8.0);
 }

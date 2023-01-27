@@ -479,8 +479,9 @@ class _SliverAppBarFindSightState extends State<SliverAppBarFindSight> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return SliverAppBar(
-      pinned: true,
-      expandedHeight: widget.animData.width,
+      floating: true,
+      // pinned: true,
+      expandedHeight: widget.animData.expandedHeight,
       // elevation: 15,
       toolbarHeight: 45,
       // titleSpacing: 0,
@@ -500,17 +501,24 @@ class _SliverAppBarFindSightState extends State<SliverAppBarFindSight> {
       centerTitle: true,
       backgroundColor: theme.primaryColor,
       flexibleSpace: Align(
-        alignment: FractionalOffset.center,
+        alignment: widget.animData.alignement,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: widget.animData.border,
-            ),
-            Text(
-              widget.animData.txt,
-              style: theme.textTheme.headline4!
-                  .copyWith(fontSize: widget.animData.value),
+            // SizedBox(
+            //   height: widget.animData.border,
+            // ),
+            Row(
+              children: [
+                SizedBox(
+                  width: widget.animData.prefixBorder,
+                ),
+                Text(
+                  widget.animData.txt,
+                  style: theme.textTheme.headline4!
+                      .copyWith(fontSize: widget.animData.value),
+                ),
+              ],
             ),
           ],
         ),

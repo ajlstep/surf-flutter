@@ -5,6 +5,7 @@ import 'package:places/const/sizes.dart';
 import 'package:places/const/texts.dart';
 import 'package:places/utils/sizes/vector4.dart';
 import 'package:places/widgets/button/buttons.dart';
+import 'package:places/widgets/divider/divider.dart';
 import 'package:places/widgets/img/svg_icon.dart';
 
 class DialogAddPhoto extends StatelessWidget {
@@ -13,7 +14,6 @@ class DialogAddPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final liteColorTheme = theme.colorScheme.secondaryContainer;
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -23,7 +23,7 @@ class DialogAddPhoto extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
-              color: Colors.white,
+              color: theme.primaryColor,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -36,7 +36,7 @@ class DialogAddPhoto extends StatelessWidget {
           child: ButtonConstructor(
             padding: const Vector4(0, 8, 0, 8, 0),
             shappe: 12,
-            backgroundColor: Colors.white,
+            backgroundColor: theme.primaryColor,
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -53,11 +53,13 @@ class DialogAddPhoto extends StatelessWidget {
 
   List<Widget> getButtonList(BuildContext context) {
     final theme = Theme.of(context);
-    final liteColorTheme = theme.colorScheme.secondaryContainer;
+    final liteColorTheme = theme.colorScheme.onSecondaryContainer;
     List<Widget> l = [];
+    var interator = 0;
     for (var el in getList()) {
       l.add(
         ButtonConstructor(
+            backgroundColor: theme.primaryColor,
             maAAlignment: MainAxisAlignment.start,
             padding: const Vector4(16, 14, 16, 14, 0),
             separatorWidth: el.separatorWidth,
@@ -73,7 +75,16 @@ class DialogAddPhoto extends StatelessWidget {
             ),
             onPressed: el.exc),
       );
+      l.add(Padding(
+        key: Key("divider_$interator"),
+        padding: const EdgeInsets.symmetric(horizontal: 14.0),
+        child: const DividerDefault(
+          height: 1,
+        ),
+      ));
+      interator++;
     }
+    l.remove(l.last);
     return l;
   }
 

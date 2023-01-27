@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
     ).then(
       (value) {
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             // builder: (context) => const SightListScreenSliver2(),
             builder: (context) {
