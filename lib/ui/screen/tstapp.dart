@@ -1,8 +1,10 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:places/ui/screen/auth_minimal.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 import 'package:places/ui/screen/onboarding_screen.dart';
+import 'package:places/ui/screen/reg_minimal.dart';
 import 'package:places/ui/screen/settings_screen.dart';
 import 'package:places/ui/screen/sigh_list_sliver.dart';
 import 'package:places/ui/screen/sigh_list_sliver2.dart';
@@ -65,6 +67,8 @@ var list = {
   "onboarding": OnboardingScreen(),
   "test page4": const TestPage5(),
   "spash screen": const SplashScreen(),
+  "reg": MinimalRegistration(),
+  "auth": MinimalAuth(),
   // "auth page": const AuthPage(),
 };
 

@@ -103,14 +103,14 @@ class _SightListScreenSliver2State extends State<SightListScreenSliver2>
           ),
           SliverToBoxAdapter(
             child: SlidingAppBar(
+              controller: _controller,
+              visible: animData.ob,
               child: AppBar(
                 flexibleSpace: searchWidget(),
                 elevation: 0,
                 toolbarHeight: 0,
                 titleSpacing: 0,
               ),
-              controller: _controller,
-              visible: animData.ob,
             ),
           ),
           const SightListSliverBody(),

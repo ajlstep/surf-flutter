@@ -479,8 +479,8 @@ class _SliverAppBarFindSightState extends State<SliverAppBarFindSight> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return SliverAppBar(
-      floating: true,
-      // pinned: true,
+      // floating: true,
+      pinned: true,
       expandedHeight: widget.animData.expandedHeight,
       // elevation: 15,
       toolbarHeight: 45,

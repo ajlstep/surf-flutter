@@ -10,6 +10,7 @@ linux
 .metadata
 # Fvm
 .fvm/flutter_sdk
+*.keymd
 
 # Miscellaneous
 *.class
