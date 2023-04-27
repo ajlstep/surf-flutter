@@ -49,18 +49,20 @@ class FilterButton extends StatelessWidget {
                   child: InkWell(
                     splashColor: splashColor, // Splash color
                     onTap: onTap,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: (boxSize.height - firstSize.height) / 2,
-                        horizontal: (boxSize.width - firstSize.width) / 2,
-                      ),
-                      child: firstIcon,
-                    ),
+                    // child: Padding(
+                    //   padding: EdgeInsets.symmetric(
+                    //     vertical: (boxSize.height - firstSize.height) / 2,
+                    //     horizontal: (boxSize.width - firstSize.width) / 2,
+                    //   ),
+                    //   child: firstIcon,
+                    // ),
+                    child: SizedBox.expand(child: Center(child: firstIcon)),
                   ),
                 ),
               ),
               if (visible)
                 Align(
+                  alignment: AlignmentDirectional.bottomEnd,
                   child: ClipOval(
                     child: DecoratedBox(
                       decoration: BoxDecoration(
@@ -75,7 +77,6 @@ class FilterButton extends StatelessWidget {
                       ),
                     ),
                   ),
-                  alignment: AlignmentDirectional.bottomEnd,
                 ),
             ],
           ),

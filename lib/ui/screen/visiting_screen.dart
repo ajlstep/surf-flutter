@@ -1,3 +1,4 @@
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:places/const/paddings.dart';
@@ -11,6 +12,8 @@ import 'package:places/widgets/card/card_widget.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:places/const/settings.dart';
 import 'package:places/widgets/bottom/bottom.dart';
+
+import '../../widgets/picker_ios/dialog.dart';
 
 class VisitingScreen extends StatelessWidget {
   final List<Visits> visitList;
@@ -187,35 +190,50 @@ class _VisitingScreenBodyState extends State<VisitingScreenBody> {
   }
 
   Function() calendarSightAction(Visits visit) {
-    return () async {
-      DateTime datenow = visit.date ?? DateTime.now();
-      TimeOfDay timenow = visit.date == null
-          ? TimeOfDay.now()
-          : TimeOfDay.fromDateTime(datenow);
+    if (Platform.isAndroid) {
+      return () async {
+        DateTime datenow = visit.date ?? DateTime.now();
+        TimeOfDay timenow = visit.date == null
+            ? TimeOfDay.now()
+            : TimeOfDay.fromDateTime(datenow);
 
-      var date = await showDatePicker(
-          context: context,
-          initialDate:
-              datenow.isBefore(DateTime.now()) ? DateTime.now() : datenow,
-          firstDate: DateTime.now(),
-          lastDate: DateTime.now().add(const Duration(days: 365)));
-      if (date != null) {
-        var time = await showTimePicker(context: context, initialTime: timenow);
-        if (time != null) {
-          date = DateTime(
-            date.year,
-            date.month,
-            date.day,
-            time.hour,
-            time.minute,
-          );
-          setState(() {
-            var vis = visitWanted.firstWhere((element) => element == visit);
-            vis.date = date;
-          });
+        var date = await showDatePicker(
+            context: context,
+            initialDate:
+                datenow.isBefore(DateTime.now()) ? DateTime.now() : datenow,
+            firstDate: DateTime.now(),
+            lastDate: DateTime.now().add(const Duration(days: 365)));
+        if (date != null) {
+          var time =
+              await showTimePicker(context: context, initialTime: timenow);
+          if (time != null) {
+            date = DateTime(
+              date.year,
+              date.month,
+              date.day,
+              time.hour,
+              time.minute,
+            );
+            setState(() {
+              var vis = visitWanted.firstWhere((element) => element == visit);
+              vis.date = date;
+            });
+          }
         }
-      }
-    };
+      };
+    } else {
+      return () async {
+        await showModalBottomSheet(
+            context: context,
+            builder: (_) {
+              return DateTimeDialogIos(
+                visit: visit,
+                visitWanted: visitWanted,
+              );
+            });
+        setState(() {});
+      };
+    }
   }
 
   Function deleteSightAction2(Visits visit) {
