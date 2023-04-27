@@ -44,10 +44,16 @@ class FiltersScreenBody extends StatelessWidget {
               return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                //   crossAxisCount: 3,
+                //   crossAxisSpacing: 20.0,
+                //   mainAxisSpacing: 20.0,
+                //   childAspectRatio: 1.3,
+                // ),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 125,
                   crossAxisSpacing: 20.0,
-                  mainAxisSpacing: 35.0,
+                  mainAxisSpacing: 20.0,
                   childAspectRatio: 1.3,
                 ),
                 itemCount: value.mocks.length,
